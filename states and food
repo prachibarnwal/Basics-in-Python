@@ -1,0 +1,51 @@
+A = {"PUNJAB":"MAKKI DI ROTI & SARSON DA SAAG",
+     "HARYANA":"CHHOLE KULCHE",
+     "TAMIL NADU":"IDLI,DOSA,CHUTNEY",
+     "RAJASTHAN":"DAAL BHAATI CHURMA",
+     "MADHYA PRADESH":"POHE & DAL BATI",
+     "BIHAR":"LITTI CHOKHA",
+     "GUJARAT":"DHOKLA",
+     "MAHARASHTRA":"MISAL PAV",
+     "WEST BENGAL":"KOSHA MANGSHO",
+     "KASHMIR":"ROGAN JOSH",
+     "ASSAM":"PAPAYA KHAR",
+     "HIMACHAL PRADESH":"DHAM",
+     "ANDHRA PRADESH":"POOTHA REKULU",
+     "TELANGANA":"HYDERABADI BIRYANI",
+     "GOA":"FISH CURRY",
+     "UTTARAKHAND":"KAFULI",
+     "TRIPURA":"CHAKHWI",
+     "JHARKHAND":"RUGRA",
+     "ODISHA":"CHENNA PODA",
+     "KERALA":"APPAM",
+     "MEGHALAYA":"JADOH",
+     "MANIPUR":"KANGSHOI",
+     "ARUNACHAL PRADESH":"THUKPA",
+     "KARNATAKA":"BISI BELE BATH",
+     "NAGALAND":"PORK WITH BAMBOO SOTHS",
+     "MIZORAM":"MISA MACH POORA",
+     "CHHATTISGARH":"CHILA",
+     "UTTAR PRADESH":"TUNDAI KABAB",
+     "SIKKIM":"MOMOS",
+     "DELHI":"GOLGAPPE"}
+while True:
+    st = input("Enter name of the state ")
+    if st in A:
+        print("Famous food of ",st," is ",A[st])
+    else:
+        print("State not found in the list ")
+        ch = input("If you know, kindly enter it's famous food, otherwise enter NO : ")
+        if ch != "NO":
+            A[st] = ch
+    print("\n"+"-"*80+"\n")
+    ans = input("Do you want to try again(YES/NO) : ")
+    if ans != "YES":
+        break
+print("THANKS for using this program.")
+print("\n")
+print("*"*80)
+print("\n")
+print("If you want then you can try anything else as well in the above typed state.")
+print("THERE's not any restriction. :)")
+print("HEHEHE, JUST A MAJAAK. xdxd")
+     
