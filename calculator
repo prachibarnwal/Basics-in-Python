@@ -1,0 +1,20 @@
+#PROGRAM FOR multiple digit CALCULATION
+print("Welcome to the  Calculator by Prachi Barnwal")
+a = int(input("Enter First Number:"))
+b = int(input("Enter Second Number:"))
+print("press 1 for ADDITION.","press 2 for SUBTRACTION","press 3 for MULTIPLICATION","press 4 for DIVISION")
+pressed = int(input())
+if pressed == 1:
+    res = a+b
+    print("Sum of numbers is ",res)
+elif pressed == 2:
+    res = a-b
+    print("Difference of numbers is ",res)
+elif pressed == 3:
+    res = a*b
+    print("Product of numbers is ",res)
+elif pressed == 4:
+    res = a/b
+    print("Remainder of numbers is ",res)
+else:
+    print("THE DIGIT YOU HAVE PRESSED IS not in the list.")
