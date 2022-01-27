@@ -1,0 +1,9 @@
+#WAP TO FIND HYPOTENUSE OF THE GIVEN RIGHT-ANGLED TRIANGLE using import math :)
+b = eval(input("Enter base of the triangle: "))
+p = eval(input("Enter altitude of the triangle: "))
+import math
+h = math.sqrt(b**2 + p**2)
+print("HYPOTENUSE of the given right-angled triangle is ",h)
+print("THANKS FOR USING IT :)")
+
+
