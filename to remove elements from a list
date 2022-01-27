@@ -1,0 +1,6 @@
+A = [30,20,40,30,20,50,60]
+b = int(input("Enter the number which you want to delete : "))
+for val in A:
+    if val == b:
+        A.remove(val)
+        
