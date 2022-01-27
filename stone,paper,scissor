@@ -1,0 +1,76 @@
+print("WELCOME TO THe ROCK PAPER AND SCISSOR GAME :) :) ")
+print("´▽`ʃ♡ƪ"* 13)
+print("TO STOP THE GAME TYPE STOP :)")
+print("You have 3 chances to play.......SO, LET'S GET STARTED :)")
+import random
+C1 = 0
+P1 = 0
+player1 = input("Enter your name : ")
+player2 = input("Press 'START' to start the game: ")
+if player2 == "START":
+    for i in range(3):
+        p = input("Enter your choice--> Rock, Paper or Scissor: ")
+        L1 = ["Rock", "Paper", "Scissor"]
+        a = random.choice(L1)
+        print("Computer Choses",a)
+        if p == player1:
+            print("It's a DRAW.-_-")
+            C1 += 0
+            P1 += 0
+        elif p == "Rock":
+            if a == "Paper":
+                print("Paper GRABS Rock.",player1,"LOSES ^_^")
+                C1 += 1
+                P1 += 0
+            elif a == "Scissor":
+                print("Rock SMASHES scissor.",player1,"WINS :)")
+                C1 += 0
+                P1 += 1
+            elif a == "Rock":
+                print("It's a DRAW")
+                P1 += 0
+                C1 += 0
+        elif p == "Paper":
+            if a == "Scissor":
+                print("Scissor CUTS Paper.",player1,"LOSES ^_^")
+                C1 += 1
+                P1 += 0
+            elif a == "Rock":
+                print("Paper GRABS Rock.",player1,"WINS :) ")
+                C1 += 0
+                P1 += 1
+            elif a == "Paper":
+                print("It's a DRAW.")
+                P1 += 0
+                C1 += 0
+        elif p == "Scissor":
+            if a == "Paper":
+                print("Scissor CUTS Paper.",player1,"WINS :)")
+                C1 += 0
+                P1 += 1
+            elif a == "Rock":
+                print("Rock SMASHES Scissor.",player1,"LOSES ^_^")
+                C1 += 1
+                P1 += 0
+            elif a == "Scissor":
+                print("It's a DRAW.")
+                P1 = 0
+                C1 += 0
+        elif player2 == STOP:
+            print("Game stopped.")
+            break
+print("*"*65)
+print("Computer SCORED",C1,"and",player1,"SCORED",P1)
+if P1 > C1:
+    print(player1,"WON THE GAME.......congratulations :)")
+elif C1 > P1:
+    print(" Computer WON THE GAME",player1,"LOSES. You can try again.")
+elif P1 == C1:
+    print("THIS GAME IS A DRAW. TRY FOR THE NEXT TIME.")
+print("THANKS FOR PLAYING.")
+print("*"*30)
+
+                
+            
+
+
