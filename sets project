@@ -1,0 +1,64 @@
+#                   SETS    OPERATIONS   :))
+'''
+WAP to perform all the operations of SETS.
+'''
+print("^"*60)
+print("\t\t\t SETS OPERATIONS")
+print("^"*60)
+A = eval(input("Enter values of set A : "))
+B = eval(input("Enter values for set B : "))
+while True:
+    print("Press 1 for UNION of SET A & B ")
+    print("Press 2 for INTERSECTION of SET A & B ")
+    print("Press 3 for A - B of SETS ")
+    print("Press 4 for B - A of SETS ")
+    print("Press 5 for EXIT ")
+    ch = int(input("Enter your choice for SETS operation : "))
+    if ch == 1:
+        c = list(A)
+        for val in B:
+            if val not in c:
+                c.append(val)
+        print("UNION of SET A & B is ", set(c))
+    elif ch == 2:
+        d = []
+        for res in A:
+            for num in B:
+                if res == num:
+                    if res not in d:
+                        d.append(res)
+        print("INTERSECTION of SET A & B is ",set(d))
+    elif ch == 3:
+        e = []
+        for val in A:
+            if val not in B:
+                e.append(val)
+        print("A - B is ",set(e))
+    elif ch == 4:
+        e = []
+        for val in B:
+            if val not in A:
+                e.append(val)
+        print("B - A is ",set(e))
+    else:
+        print("Thanks for using this program :))")
+        break
+
+
+
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
