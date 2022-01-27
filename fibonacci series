@@ -1,0 +1,35 @@
+'''
+WAP for a fibonacci series less than 200.
+'''
+a = 0
+b = 1
+f = ()
+c = a+b
+while c < 200:
+    f += (c,)
+    a = b
+    b = c
+    c = b+a
+print(f)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
