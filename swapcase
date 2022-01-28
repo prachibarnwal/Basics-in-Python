@@ -1,0 +1,22 @@
+'''
+program to swap an element with its adjacent one.
+'''
+print("*"*60)
+a = [10,20,30,40,39,59,68,28]
+for i in range(0,len(a),2):
+    a[i],a[i+1]=a[i+1],a[i]
+print(a)
+print("*"*60)
+print("\n\n")
+print("@"*60)
+'''
+WAP to input a list and swap first half of the list with second half of the
+list.
+'''
+A = eval(input("Enter a list of numbers separated by comas: "))
+n = len(A)%2
+if n == 0:
+    for i in range(len(A)//2):
+        A.append(A.pop(0))
+    print(A)
+print("@"*60)
