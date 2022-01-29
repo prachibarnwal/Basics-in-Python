@@ -1,0 +1,9 @@
+#WAP to input 5 names along with their marks and make a dictionary of the same information
+print("^"*60)
+dict = {}
+for res in range(5):
+    name = input("Enter name : ")
+    marks = eval(input("Enter marks : "))
+    dict[name] = marks
+print(dict)
+print("^"*60)
