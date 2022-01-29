@@ -1,0 +1,11 @@
+        #PROGRAM TO CALCULATE AREA AND CIRCUMFERENCE OF A CIRCLE
+r = eval(input("Enter radius of circle:"))
+a = 22/7 * r**2
+c = 2 * 22/7 * r
+print("AREA IS", a)
+print("CIRCUMFERENCE IS", c)
+
+
+
+         
+        
