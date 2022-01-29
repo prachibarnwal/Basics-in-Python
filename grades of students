@@ -1,0 +1,13 @@
+#PROGRAM TO PRINT GRADE OF STUDENTS :))
+n = str(input("Enter Student's name:-"))
+p = eval(input("Enter the PERCENTAGE MARKS=>"))
+if p >= 90:
+    print("EXCELLENT, YOU GOT A+")
+elif p >= 80 and p < 90:
+    print("NICE, YOU GOT A")
+elif p >=60 and p < 80:
+    print("YOU GOT B, which is not accepted from you")
+elif p >= 50 and p < 60:
+    print("YOU GOT C, need to improve")
+elif p < 50:
+    print("YOU NEED TO START YOUR STUDY ASAP")
