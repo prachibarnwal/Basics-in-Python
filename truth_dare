@@ -1,0 +1,110 @@
+#TRUTH AND DARE GAME
+import random as rd
+import time
+print("&**"*20)
+print("\t\t\t-----WELCOME TO THE TRUTH & DARE GAME-----")
+time.sleep(2)
+print("\n")
+print("This game is directed by my one of the most favorite educator---ANJALI LUTHRA MA'AM"
+      "\n","\t\tAnd is created by PRACHI BARNWAL.......!!")
+time.sleep(3)
+print("READY TO PLAY.............................!!!!")
+time.sleep(3)
+print("\t\tGET SET GO...........................!!!!!")
+time.sleep(2)
+print("**"*20)
+names = input("Enter names of players(separated by commas) : ")
+names = names.split(",")
+print("WAIT a second.........The game is about to start.....!!!")
+time.sleep(2)
+print("\t\t-------------------------------------------------------------------------------------------------------------------")
+time.sleep(1)
+print("THE GAME IS STARTING IN........")
+time.sleep(1)
+print("\n\t3")
+time.sleep(1)
+print("\n\t\t2")
+time.sleep(2)
+print("\n\t\t\t1")
+time.sleep(3)
+print("\n\t\t\t\t GO...................!!!")
+truth = ["Which is your favourite subject........??", "Name your favorite educator on UNACADEMY...!!", "What is your favorite FASTFOOD item........????",
+             "If you have 2 options of TEA/COFFEE/COLD-DRINKS/LASSI and SWEETS/DESSERTS/CAKES/CHOCOLATES, then whiich one would you choose.....???", "Tell us something about yourself which nobody knows........xd....!!",
+             "Which is your favorite PARTY-WEAR DRESS.........?? (Don't you dare to say ki mai to party me hi nhi jata/jati.......aur ye bhi mat bolna ki mai PARTY me sirph khane ke liye jata/jati hoon........xdxdxd",
+             "Is there anyone on UNACADEMY, who is from your state.....If YES--then tell us his/her/their name & If NO--then tellus something funny happened with you today....(something should be FUNNY & NO RONA-DHONA..xd)",
+             "Tell us your best friend's name on UNACADEMY (if any).......otherwise........apne school ka koi kissa suna do........xd...............!!!!!!!!!!!!",
+             "Which is your birthday month......?? and apne last birthday ka koi memory h to vo bhi batao...........!!",
+             "BHAIYA/DIDI.....Kya aapko aisa lagta h ki CS leke aapne koi galti kardi hai...........xdxd.............sachchi-sachchi batana, jhooth bolne ke baare me sochna bhi mat.........xd.....and and and agar ye question TOPPER logon(vo log jinke liye CS is TURU LOB h) ke paas gya h to kindly IGNORE this question, and tell us your 2 or 3 hobbies :)) ",
+             "Have you ever made an excuse for not going to ASSEMBLY in school..........????? XD",
+             "Have you ever put your hand in garma-garam TEA or cold WATER............(intentionally/unintentionally) XD.............????",
+             "Do you like COOKING.................agar kisi ko ye question pasand nahi aaya h to Tell us ki have you ever did any phaaltoo sa stunt on CYCLE/BIKE or anything else........??? xd",
+             "Who's your favorite singer....?? and Which is your favorite SONG........???? ...........ab ye mat kehna ki saare song hi favorite hain ya song sunna pasand hi nhi h .........xd................!!",
+             "When was the last time you lied...........??? and Tell us the reason for which you lied................xdd",
+             "Have you ever played a PRANK on someone......???",
+             "What is your favorite store to SHOP at...........???..............BATAO BATAO.....................sharmaao mat, shaukh se batao.....xdxd"]
+dare = ["Tell us a joke so that everyone could laugh in chat box....xd............MOST IMPORTANT CONDITION----joke should be on RAISE A HAND",
+            "If you have any bestfriend on UNACADEMY, tell us something funny about himself/herself...........xdxdxd",
+            "Which kind of movies do you like...........???",
+            "Are you a BATHROOM-SINGER.............???jhooth mat bolna .................sabhi hote hain.......xdxd",
+            "Kisi bhi HIT movie ke ek achchhe-se dialogue ki MIMICRY karo.....on call........xd",
+            "Do you watch any serial............If yes then bejhijhak bol dalo..........sabhi dekhte honge may be, bindaas bol do...........xd",
+            "Have you ever cried during taking INJECTIONS or COVID-19 VACCINE.........xdxd",
+            "Koi bachchon wali RIDDLE sunao............only if you know..............nahi to koi FUNNY-TYPES question poochh lo from we all.......including MA'AM as well................xd",
+            "Have you ever made any short-form/any funny lines which is now in trend(XDXD)... on UNACADEMY jiske baare me kisi EDUCATOR ko pata ho.........If yes then tell us about that.........!!!!!!!",
+            "Tell us something funny about your SCHOOL-LIFE..   :))",
+            "Make a TATTOO on your hand right now using ball pen or any color-pens........and send a pic in DOUBT-BOX...........xd",
+            "COCK ke aawaaz ki mimicry karo on call.................ab live class me aap murga to ban nhi sakte...........to sidhe-sidhe mimicry hi kardo...........xdxd",
+            "according to you, who is the most annoying person in the class...........agar vo mai hoon then NO PROBLEM........bindaas boldo...........and agar koi aur h to bhi bol hi do........xd :))",
+            "according to you CLASS ME SABSE MAHAAN STUDENT kaun h.......???  (MAHAAN as in good student).......???",
+            "Hand raise karke call pe aao.................and......and and......and.....1 & 1/2 minute tak bina rooke bolte raho...........ab bolna kya h vo tum socho.....xd...........it can be your intro if you want :))"]
+while True:
+    if len(names) == 0:
+        print("GAME OVER. ALL PLAYERS GOT THEIR TURN.")
+        break
+    time.sleep(2)
+    n = rd.choice(names)
+    print("Player selected is..................",n)
+    time.sleep(2)
+    names.remove(n)
+    ch = int(input("PRESS 1 for telling a truth about yourself.....and PRESS 2 if you have dare.....(xd) : "))
+    if ch == 1:
+        print("^"*40)
+        print(n+" , you have selected TRUTH :)")
+        print("\n")
+        print("YOUR QUESTION IS ON IT'S WAY................!!!!!!!!")
+        time.sleep(3)
+        print("HERE IT IS............................!!!!!!!")
+        time.sleep(2)
+        print(rd.choice(truth))
+        answer = input("ENTER YOUR ANSWER : ")
+        time.sleep(5)
+    elif ch == 2:
+        print("^"*40)
+        print(n+" , you have selected DARE :)")
+        print("\n")
+        print("HOPE YOU GET SOMETHING NOICE..........xd................!!!!!!!!")
+        time.sleep(3)
+        print("HERE YOUR DARE IS..........................!!!!!!!")
+        time.sleep(2)
+        print(rd.choice(dare))
+        print("\n")
+        print("*"*50)
+        time.sleep(2)
+        anss = input("WE ALL ARE WAITING..........jldi se call pe jaao and apna task complete karo....xd")
+        time.sleep(4)
+print("Thanks for playing........!!!!!")
+print("kindly give some ratings...........xdxd(in ad style) XDXD")
+ch = int(input("Press 1 for good...Press 2 for very good...Press 3 for amazing...Press 4 for excellent...Press 5 for mind-blowing :"))
+if ch == 1 or ch == 2 or ch == 3 or ch == 4 or ch == 5:
+    print("THANK YOU FOR YOUR TIME .........hihihihi :))")
+else:
+    print("Aap bahot achchhe ho...............aisa mai kyoo boloon?? -_- .........TATA................TC.....xd")
+print("This game was just for fun :).........Hope you've enjoyed it .. :))")
+
+    
+        
+                
+    
+
+
+        
