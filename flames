@@ -1,0 +1,37 @@
+import time
+while True:
+    n3 = {"F":"FRIENDS FOREVER :)","L":"LADAKOO FRIENDS BUT FULLY LOYAL :)",
+      "A":"ATTRACTIVE JOCKERS XDXD","M":"MEME MAKER XDXD","E":"ENEMIES xd...BUT TURU FRIENDS :)",
+      "S":"SIBLINGS (ab isse badhiya aur kya hi loge??) xd   :))"}
+    print("\t\tWELCOME TO THE MOST FAMOUS FLAMES GAME ")
+    time.sleep(2)
+    print("_*_"*50)
+    time.sleep(2)
+    a = input("Enter name of the first player : ")
+    time.sleep(1)
+    b = input("Enter name of the second player : ")
+    time.sleep(1)
+    d = a
+    c = len(b)
+    print("STORING THE NAMES ...............!!!!!!!!")
+    time.sleep(3)
+    print("THE GAME IS ON IT'S WAY :)) ")
+    time.sleep(1)
+    print("*"*60)
+    time.sleep(2)
+    for val in b.lower():
+        if val not in d.lower():
+            c += 1
+            d += val
+    res = ["F","L","A","M","E","S"]
+    for ch in range(len(res) - 1):
+        n = c % len(res)
+        p = res.pop(n-1)
+        print(p," GOT CANCELLED OUT.")
+        print("REMAINING WORDS ARE : ",res)
+        time.sleep(4)
+    print("YOU GOT : ",res[0],":",n3[res[0]])
+    time.sleep(2)
+    print("THIS GAME WAS JUST FOR FUN :)")
+    time.sleep(3)
+    print("\t\t\t***HOPE YOU'VE ENJOYED IT.........!!!***")
