@@ -1,0 +1,76 @@
+print("&**"*60)
+print("\t\t\t----WELCOME TO THE TRUTH & DARE GAME----")
+print("\n")
+print("This game is directed by my one of the most favourite educator ANJALI LUTHRA MA'AM......and and and created by PRACHI BARNWAL")
+print("&**"*60)
+import random as rd
+import time
+names = input("Enter names of players : ")
+names = names.split(",")
+print("\t\t\t READY to PLAY !!!!!!")
+print("\n")
+print("Let's go...")
+time.sleep(1)
+print("\t\t...")
+time.sleep(1)
+print("\t\t...")
+time.sleep(1)
+print("\t\t!!!!!")
+time.sleep(1)
+truth = ["Which is your favourite subject ?",
+         "Name your favourite educator on UNACADEMY.",
+         "Which is your favourite fast food ? ",
+         "If you have 2 options of TEA/COFFEE/COLD DRINKS/LASSI and SWEETS/DESSERTS/CAKES/CHOCOLATES,then which one would you choose...??",
+         "Tell us something about yourself which nobody knows......xdxd",
+         "Which is your favourite party wear dress...?(now don't tell ki mai party me jati/jata hi nhi.....xdxdxd",
+         "which is your birthday month ?",
+         "Tell your best friend name on UNACADEMY....",
+         "Is there anyone on UNACADEMY(who is from your state)??.if yes then tell his/her/their name otherwise leave it and tell us something happened with you today(something should be funny......no rona dhona xd)",
+         "Tell us something funny about your school life or about your childhood",
+         "Kya aapko lagta hai ki cs leke aapne koi glti kardi....xdxd......sach batana....jhooth bolne ke baare me sochna bhi mat....and agar ye question topper(vo log jinke liye CS is TURU LOB xdxdxd) logo ke paas ja raha hai to vo ise ignore karein and next question ka answer dein-->>Tell your 2 or 3 hobbies :))  ",
+         "Have you ever cleaned your bench & desk with your classmate's bag??........sharmaao mat sachi sachi batao.......sab karte hain xdxdxdxd...(CREDIT GOES TO APOORVA FOR THIS QUESTION......mam, mai plagiarism nhi karti :)",
+         "Have you ever made an excuse in school for not going to assembly ?? xd",
+         "Have you ever put your hand in garma-garam tea or cold water",
+         "Do you like cooking ??.....if anybody don't like this question then tell us ki have you ever done any phaaltoo sa stunt on cycle or bike...(XD)",
+         "Who is your favourite singer.......and which is your favourite song......don't tell ki saare hi favourite hain....xdxdxd"]
+dare = ["Sing a SONG of your choice.....if you don't sing then you will get punishment of slaping yourself........xdxd(Just a majjak).......gaa do re shanti se......and han chats me song likhke ye mat bolna ki gaa diya gaana....chup chap se call pe aao and gaao.xd...xdxd",
+        "Tell us a joke so that everybody can laugh in chat box ..xd.......IMPORTANT CONDITION---JOKE should be on RAISE A HAND",
+        "If you have any best friend on UNACADEMY or in SCHOOL, then tell us something funny about herself/himself...  :))",
+        "Which kind of movie do you like......??",
+        "Kisi bhi hit movie ka ek achchhe se popular dialogue ki mimicry karo...(ON CALL)",
+        "Do you watch any serial.........if yes then bejhijhak hoke us serial ka name batao.........bindaas bol dalo...xd",
+        "Have you ever cried during taking injections or during taking covid-19 vaccine....xdxd",
+        "Koi bachchon wali riddle sunao.......only if you know..........nahi to koi funny types question poochh lo ....xd",
+        "Have you ever made any short form on UNACADEMY(jiske baare me kisi educator ko pata ho).....if yes then tell us about that......"] 
+while True:
+    if len(names) == 0:
+        print("GAME OVER. ALL PLAYERS GOT THEIR TURN.")
+        break
+    time.sleep(2)
+    n = rd.choice(names)
+    print("PLAYER selected is ", n)
+    time.sleep(1)
+    names.remove(n)
+    ch = int(input("PRESS 1 for TRUTH & PRESS 2 for DARE :) : "))
+    if ch == 1:
+        print("^"*40)
+        print(n+",you selected TRUTH")
+        print("Your question is ")
+        print(rd.choice(truth))
+        time.sleep(2)
+    elif ch == 2:
+        print("^"*40)
+        print(n+",you selected DARE")
+        print("Your question is ")
+        print(rd.choice(dare))
+        ans = input("Do you want to play again (YES/NO) : ")
+        if ans == "no" or "noi" or "nahh":
+            break
+print("Thanks for playing........!!!!!")
+print("kindly give some ratings...........xdxd(in ad style) XDXD")
+ch = int(input("Press 1 for good...Press 2 for very good...Press 3 for amazing...Press 4 for excellent...Press 5 for mind-blowing :"))
+if ch == 1 or 2 or 3 or 4 or 5:
+    print("THANK YOU FOR YOUR TIME .........hihihihi :))")
+else:
+    print("Aap bahot achchhe ho...............aisa mai kyoo boloon?? -_- .........TATA................TC.....xd")
+print("This game was just for fun :).........Hope you've enjoyed it .. :))")
