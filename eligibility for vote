@@ -1,0 +1,19 @@
+'''
+    WAP to input names of people and their age and store them in a dictionary......and print list
+    of those people who are eligible for VOTE i.e.--whose age is >= 18.
+'''
+import time
+dict ={}
+list =[]
+names = int(input("How many peoples are there : "))
+time.sleep(2)
+print("-"*50)
+for i in range(names):
+    n = input("Enter name : ")
+    a = int(input("Enter age : "))
+    dict[n] = a
+print(dict)
+for k in dict:
+    if dict[k] >= 18:
+        list.append(k)
+print("People eligible to vote are : ",list)
