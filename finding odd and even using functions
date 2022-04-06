@@ -1,0 +1,9 @@
+def check(num):
+    if num % 2 == 0:
+        return "Even"
+    else:
+        return "Odd"
+
+for i in range(5):
+    n = int(input("Enter a number : "))
+    print(n, " is ", check(n))
