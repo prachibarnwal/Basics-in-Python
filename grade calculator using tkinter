@@ -1,0 +1,35 @@
+from tkinter import *
+def result():
+    n = t1.get()
+    m = eval(t2.get())
+    if m >= 90:
+        l3.config(text=n+" Got Grade A+",foreground = "yellow")
+    elif m >= 85:
+        l3.config(text=n+" Got Grade A",foreground = "black")
+    elif m >= 80:
+        l3.config(text=n+" Got Grade B++", foreground = "pink")
+    elif m >= 70:
+        l3.config(text=n+" Got Grade B")
+    elif m >= 60:
+        l3.config(text=n+" Got Grade C")
+    elif m >= 50:
+        l3.config(text=n+" Got Grade D",)
+    elif m <= 40:
+        l3.config(text=n+" You need to study hard",)
+
+win = Tk()
+win.title("Grade Calculator")
+win.geometry("600x500")
+l1 = Label(win, text = "Enter Name : ", foreground = "#BB8834", background = "cyan", font = ("Arial",20))
+l1.place(x = 30, y = 20)
+t1 = Entry(win,foreground = "#BB8834", background = "cyan", font = ("Arial",20))
+t1.place(x = 230, y = 20)
+l2 = Label(win, text = "Enter Percentage : ", foreground = "#BB8834", background = "cyan", font = ("Arial",20))
+l2.place(x = 30, y = 80)
+t2 = Entry(win,foreground = "#BB8834", background = "cyan", font = ("Arial",20))
+t2.place(x = 290, y = 80)
+b = Button(win, text = "Show Grade",command = result, font = ("Times New Roman",20))
+b.place(x = 110, y = 140)
+l3 = Label(win,text = "Your Grade Will Appear Here ", foreground = "#DD7BC9", background = "#83FDE4", font = ("Monotype Corosiva",25))
+l3.place(x = 65, y = 205)
+win.mainloop()
