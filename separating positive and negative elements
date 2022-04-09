@@ -1,0 +1,11 @@
+list1 = list(eval(input("Enter a list of no. : ")))
+list2 = []
+list3 = []
+for k in list1:
+    if k > 0:
+        list2.append(k)
+    elif k < 0:
+        list3.append(k)
+print("Actual list is ",list1)
+print("List of positive numbers is ",list2)
+print("List of negative numbers is ",list3)
