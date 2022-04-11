@@ -1,0 +1,66 @@
+from tkinter import *
+win = Tk()
+stu = {}
+def add():
+    n = t1.get()
+    m = int(t2.get())
+    stu[n] = m
+    l3.config(text = str(stu)) 
+def search():
+    n = t1.get()
+    if n in stu:
+        l3.config(text = n + " scored "+ str(stu[n]))
+    else:
+        l3.config(text = "No Student Found With This Name. :)")
+def delete():
+    n = t1.get()
+    if n in stu:
+        l3.config(text = n+" With Score "+ str(stu[n])+" Is Deleted Successfully")
+        stu.pop(n)
+    else:
+        l3.config(text = "No Student Found With This Name ")
+
+def result():
+    n = t1.get()
+    m = eval(t2.get())
+    if m >= 90:
+        l3.config(text=n+" Got Grade A+",foreground = "yellow")
+    elif m >= 85:
+        l3.config(text=n+" Got Grade A",foreground = "black")
+    elif m >= 80:
+        l3.config(text=n+" Got Grade B++", foreground = "pink")
+    elif m >= 70:
+        l3.config(text=n+" Got Grade B")
+    elif m >= 60:
+        l3.config(text=n+" Got Grade C")
+    elif m >= 50:
+        l3.config(text=n+" Got Grade D",)
+    elif m <= 40:
+        l3.config(text=n+" You need to study hard",)
+
+win.geometry("500x400")
+win.title("Student Record by Prachi Barnwal :) ")
+mb = Menu(win)
+win.config(menu=mb)
+m1 = Menu(mb)
+m1.add_command(label = "Add New", command = add)
+m1.add_command(label = "Search", command = search)
+m1.add_command(label = "Delete", command = delete)
+mb.add_cascade(label = "STUDENT", menu = m1, underline = 0)
+
+m2 = Menu(mb)
+m2.add_command(label = "Grade", command = result)
+mb.add_cascade(label = "GRADES", menu = m2, underline = 0)
+
+l1 = Label(win, text = "Name : ")
+l1.place(x = 20, y = 50)
+t1 = Entry(win)
+t1.place(x = 80, y = 50)
+l2 = Label(win, text = "Marks : ")
+l2.place(x = 20, y = 100)
+t2 = Entry(win)
+t2.place(x = 100, y = 100)
+l3 = Label(win, text = "Data : ")
+l3.place(x = 30, y = 150)
+
+win.mainloop()
