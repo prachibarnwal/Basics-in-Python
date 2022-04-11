@@ -1,0 +1,80 @@
+'''Code to input name and marks(in 5 subjects) of a student and print student's percentage using
+              *****TKINTER*****
+'''
+from tkinter import *
+def add():
+    m1 = eval(n1.get())
+    m2 = eval(n2.get())
+    m3 = eval(n3.get())
+    m4 = eval(n4.get())
+    m5 = eval(n5.get())
+    m6 = eval(n6.get())
+    m7 = str(n.get())
+    res = m1 + m2 + m3 + m4 + m5 + m6
+    l3.configure(text="Student "+str(m7)+" got "+str(res)+" out of 600 ")
+def percentage():
+    m1 = eval(n1.get())
+    m2 = eval(n2.get())
+    m3 = eval(n3.get())
+    m4 = eval(n4.get())
+    m5 = eval(n5.get())
+    m6 = eval(n6.get())
+    res = m1 + m2 + m3 + m4 + m5 + m6
+    marks = round((res / 6),2)
+    l4.configure(text="Percentage marks of student is "+str(marks)+"%")
+    
+
+stu = Tk()
+stu.geometry("500x450")
+stu.title("REPORT CARD by Prachi Barnwal")
+
+al = Label(stu,text = "AL coders ROCK......!!!!!!")
+al.place(x = 180, y = 5)
+
+l1 = Label(stu, text = "Name of STUDENT : ")
+l1.place(x = 60, y = 30)
+
+n = Entry(stu)
+n.place(x = 176, y = 30)
+
+l2 = Label(stu, text = "Enter marks : ",font = ("Arial Bold",10))
+l2.place(x = 150, y = 60)
+
+s1 = Label(stu, text = "MATHS : ")
+s2 = Label(stu, text = "SCIENCE : ")
+s3 = Label(stu, text = "HINDI : ")
+s4 = Label(stu, text = "COMPUTER : ")
+s5 = Label(stu, text = "ENGLISH : ")
+s6 = Label(stu, text = "OPTIONALS : ")
+s1.place(x = 50, y = 80)
+s2.place(x = 240, y = 80)
+s3.place(x = 50, y = 160)
+s4.place(x = 240, y = 160)
+s5.place(x = 50, y = 240)
+s6.place(x = 240, y = 240)
+
+n1 = Entry(stu)
+n1.place(x = 110, y = 80)
+n2 = Entry(stu)
+n2.place(x = 315, y = 80)
+n3 = Entry(stu)
+n3.place(x = 110, y = 160)
+n4 = Entry(stu)
+n4.place(x = 315, y = 160)
+n5 = Entry(stu)
+n5.place(x = 110, y = 240)
+n6 = Entry(stu)
+n6.place(x = 315, y = 240)
+
+b1 = Button(stu,text = "Show total marks",command = add, font = ("Arial",10))
+b2 = Button(stu,text = "Show Percentage",command = percentage, font = ("Arial",10))
+b1.place(x = 100, y = 300)
+b2.place(x = 220, y = 300)
+
+l3 = Label(stu,text = "MARKS obtained", font = ("Arial Bold",14))
+l3.place(x = 60, y = 340)
+
+l4 = Label(stu,text = "Percentage marks",font = ("Arial Bold",14))
+l4.place(x = 60, y = 380)
+
+stu.mainloop()
