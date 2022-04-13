@@ -1,0 +1,12 @@
+def hcf(a,b):
+    while a % b != 0:
+        rem = a % b
+        a = b
+        b = rem
+    return b
+a = int(input("Enter first number : "))
+b = int(input("Enter second number : "))
+c = int(input("Enter third number : "))
+res = hcf(a,b)
+res = hcf(res,c)
+print("HCF OF THREE NUMBERS IS ", res)
