@@ -1,0 +1,9 @@
+import numpy as np
+a = np.array(eval(input("Enter first matrix ")))
+ar = np.array(a)
+b = np.transpose(ar)
+print("Entered matrix is : ")
+print(ar)
+print("\nTranspose of matrix is : ")
+print(b)
+      
