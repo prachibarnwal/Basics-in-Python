@@ -1,0 +1,5 @@
+a = eval(input("Enter a matrix : "))
+for i in range(len(a)):
+    print()
+    for j in range(len(a[i])):
+        print(a[i][j], end = '\t')
