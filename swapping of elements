@@ -1,0 +1,18 @@
+#QNO 4
+'''
+Write a function in Python, which accepts an integer list
+    as arguments and swaps the elements of every even location
+        with the following odd location.
+            For ex. List received is [12, 34, 45, 56, 67,78]
+                The function should print after processing : [34, 12, 56, 45,78, 67]
+'''
+def swapping(l):
+    n = len(l) 
+    if len(l) % 2 == 0:
+        for k in range(0,n,2):
+            l[k], l[k+1] = l[k+1],l[k]
+        print("swapped list is : ",l)
+    else:
+        print("WOULD YOU PLEASE ENTER EVEN NUMBER OF ELEMENTS :))")
+k = list(eval(input("Enter alist of numbers : ")))
+swapping(k)
