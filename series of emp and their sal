@@ -1,0 +1,19 @@
+'''
+WAP to input no of employees and then input name of employee as index and their salary
+   as values
+           and to print series of those employees whose salaries are
+                       less than 20,000
+'''
+import pandas as pd
+n = int(input("Enter number of employees : "))
+emp = {}
+for i in range(n):
+    nam = input("Enter name of the employee : ")
+    sal = int(input("Enter employee's  salary : "))
+    emp[nam] = sal
+ser = pd.Series(emp)
+print("Series created is : ")
+print(ser)
+print("Employees having salary less than 20,000 are : ")
+print(ser[ser < 20000])
+    
