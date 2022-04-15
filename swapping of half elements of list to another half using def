@@ -1,0 +1,20 @@
+'''
+Define a function Swaparr() in python to swap the first half
+    of the List with Second half of the list.
+    For ex. List received is [12, 34, 45, 56, 67,78]
+        The function should print after processing : [56, 67, 78, 12,34, 45]
+'''
+#QNO 3
+def Swaparr(l):
+    n = len(l) // 2
+    if len(l) % 2 == 0:
+        for i in range(n):
+            l[i],l[i+n] = l[i+n],l[i]
+        print("New list is ",l)
+    else:
+        print("Kindly enter even number of elements :) ")
+
+lis = list(eval(input("Enter a list of numbers : ")))
+Swaparr(lis)
+
+        
