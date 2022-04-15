@@ -1,0 +1,12 @@
+import pandas as pd
+n = int(input("Enter number of students : "))
+stu = {}
+for k in range(n):
+    name = input("Enter name of the student : ")
+    marks = int(input("Enter the marks : "))
+    stu[name] = marks
+print("Series created is : ")
+s = pd.Series(stu)
+print(s)
+print("Students getting Scholarship are : ")
+print(s[s >= 90])
