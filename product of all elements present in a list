@@ -1,0 +1,15 @@
+#QNO.5
+'''
+Write a function in Python to print the product of all
+    elements in a List received as Parameter to the function.
+        For ex. List received is [1,3,5,2]
+            The function should print after processing : 30
+'''
+def multiplier(J):
+    c = 1
+    for k in J:
+        c *= k
+    print("The biggest number after multiplying all the elements is : ",c)
+
+f = list(eval(input("Enter a list of numbers : ")))
+multiplier(f)
