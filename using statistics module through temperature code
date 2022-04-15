@@ -1,0 +1,8 @@
+'''
+WAP to use statistics module in a temperature program.
+'''
+temp = eval(input("Enter temperature of 7 days : "))
+import statistics as st
+print("Average temperature is ",round(st.mean(temp),2))
+print("Median of given temperature is ",st.median(temp))
+print("Most frequent temperature is ",st.mode(temp))
