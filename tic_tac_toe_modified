@@ -1,0 +1,256 @@
+import time
+from tkinter import *
+turn = 0
+def check():
+    n = t1.get()
+    m = t2.get()
+    if b1['text'] == b2['text'] == b3['text']:
+        if b1['text'] == 'X':
+            l3.configure(text = "WINNER OF THE ROUND IS "+n)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        elif b1['text'] == 'O':
+            l3.configure(text = "WINNER OF THE ROUND IS "+m)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    elif b4['text'] == b5['text'] ==b6['text']:
+        if b4['text'] == 'X':
+            l3.configure(text = "WINNER OF THE ROUND IS "+n)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        elif b4['text'] == 'O':
+            l3.configure(text = "WINNER OF THE ROUND IS "+m)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    elif b7['text'] == b8['text'] == b9['text']:
+        if b7['text'] == "X":
+            l3.configure(text = "WINNER OF THE ROUND IS "+n)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        elif b7['text'] == 'O':
+            l3.configure(text = "WINNER OF THE ROUND IS "+m)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    elif b1['text'] == b5['text'] == b9['text']:
+        if b1['text'] == "X":
+            l3.configure(text = "WINNER OF THE ROUND IS "+n)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        elif b1['text'] == 'O':
+            l3.configure(text = "WINNER OF THE ROUND IS "+m)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    elif b3['text'] == b5['text'] == b7['text']:
+        if b3['text'] == "X":
+            l3.configure(text = "WINNER OF THE ROUND IS "+n)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        elif b3['text'] == 'O':
+            l3.configure(text = "WINNER OF THE ROUND IS "+m)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    elif b7['text'] == b4['text'] == b1['text']:
+        if b1['text'] == "X":
+            l3.configure(text = "WINNER OF THE ROUND IS "+n)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        elif b1['text'] == 'O':
+            l3.configure(text = "WINNER OF THE ROUND IS "+m)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    elif b2['text'] == b8['text'] == b5['text']:
+        if b2['text'] == "X":
+            l3.configure(text = "WINNER OF THE ROUND IS "+n)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        elif b2['text'] == 'O':
+            l3.configure(text = "WINNER OF THE ROUND IS "+m)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    elif b6['text'] == b3['text'] == b9['text']:
+        if b6['text'] == "X":
+            l3.configure(text = "WINNER OF THE ROUND IS "+n)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        elif b6['text'] == 'X':
+            l3.configure(text = "WINNER OF THE ROUND IS "+m)
+            l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    elif turn > 9:
+        l3.configure(text = "NOBODY WINS, IT'S A TIE >_<")
+        l4 = Label(tic, text = "_-_-_-_-_-_-_-_", font = ("COMIC SANS MS",18,"bold"))
+        l4.place(x = 180,y = 150) 
+
+def b1():
+    n = t1.get()
+    m = t2.get()
+    global turn
+    if b1["text"] != "X" and b1["text"] != "O":
+        if turn % 2 == 0:
+            b1.configure(text = "X")
+            l4 = Label(tic, text = "TURN OF "+m, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        else:
+            b1.configure(text = "O")
+            l4 = Label(tic, text = "TURN OF "+n, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    turn += 1
+    return check()
+def b2():
+    n = t1.get()
+    m = t2.get()
+    global turn
+    if b2["text"] != "X" and b2["text"] != "O":
+        if turn % 2 == 0:
+            b2.configure(text = "X")
+            l4 = Label(tic, text = "TURN OF "+m, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        else:
+            b2.configure(text = "O")
+            l4 = Label(tic, text = "TURN OF "+n, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    turn += 1
+    return check()
+def b3():
+    n = t1.get()
+    m = t2.get()
+    global turn
+    if b3["text"] != "X" and b3["text"] != "O":
+        if turn % 2 == 0:
+            b3.configure(text = "X")
+            l4 = Label(tic, text = "TURN OF "+m, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        else:
+            b3.configure(text = "O")
+            l4 = Label(tic, text = "TURN OF "+n, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    turn += 1
+    return check()
+def b4():
+    n = t1.get()
+    m = t2.get()
+    global turn
+    if b4["text"] != "X" and b4["text"] != "O":
+        if turn % 2 == 0:
+            b4.configure(text = "X")
+            l4 = Label(tic, text = "TURN OF "+m, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        else:
+            b4.configure(text = "O")
+            l4 = Label(tic, text = "TURN OF "+n, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    turn += 1
+    return check()
+def b5():
+    n = t1.get()
+    m = t2.get()
+    global turn
+    if b5["text"] != "X" and b5["text"] != "O":
+        if turn % 2 == 0:
+            b5.configure(text = "X")
+            l4 = Label(tic, text = "TURN OF "+m, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        else:
+            b5.configure(text = "O")
+            l4 = Label(tic, text = "TURN OF "+n, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    turn += 1
+    return check()
+def b6():
+    n = t1.get()
+    m = t2.get()
+    global turn
+    if b6["text"] != "X" and b6["text"] != "O":
+        if turn % 2 == 0:
+            b6.configure(text = "X")
+            l4 = Label(tic, text = "TURN OF "+m, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        else:
+            b6.configure(text = "O")
+            l4 = Label(tic, text = "TURN OF "+n, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    turn += 1
+    return check()
+def b7():
+    n = t1.get()
+    m = t2.get()
+    global turn
+    if b7["text"] != "X" and b7["text"] != "O":
+        if turn % 2 == 0:
+            b7.configure(text = "X")
+            l4 = Label(tic, text = "TURN OF "+m, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        else:
+            b7.configure(text = "O")
+            l4 = Label(tic, text = "TURN OF "+n, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    turn += 1
+    return check()
+def b8():
+    n = t1.get()
+    m = t2.get()
+    global turn
+    if b8["text"] != "X" and b8["text"] != "O":
+        if turn % 2 == 0:
+            b8.configure(text = "X")
+            l4 = Label(tic, text = "TURN OF "+m, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        else:
+            b8.configure(text = "O")
+            l4 = Label(tic, text = "TURN OF "+n, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    turn += 1
+    return check()
+def b9():
+    n = t1.get()
+    m = t2.get()
+    global turn
+    if b9["text"] != "X" and b9["text"] != "O":
+        if turn % 2 == 0:
+            b9.configure(text = "X")
+            l4 = Label(tic, text = "TURN OF "+m, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+        else:
+            b9.configure(text = "O")
+            l4 = Label(tic, text = "TURN OF "+n, font = ("COMIC SANS MS",18,"bold"))
+            l4.place(x = 180,y = 150) 
+    turn += 1
+    return check()
+
+
+tic = Tk()
+tic.title("TIC_TAC_TOE by an AL Coder :)")
+tic.geometry("400x300")
+
+l1 = Label(tic, text = "PLAYER 1 NAME :")
+l1.place(x = 5, y = 15)
+l2 = Label(tic, text = "PLAYER 2 NAME :")
+l2.place(x = 5, y = 45)
+l3 = Label(tic,text = "winner name here.....!!", font = ("Arial Bold",14))
+l3.place(x = 170, y = 240)
+
+t1 = Entry(tic, foreground = "turquoise", background = "yellow",font = ("Arial",12))
+t1.place(x = 110, y = 15)
+t2 = Entry(tic, foreground = "turquoise", background = "yellow",font = ("Arial",12))
+t2.place(x = 110, y = 45)
+
+b1 = Button(tic,command = b1, text = '_',foreground = "white", background = "black", font = ("Arial",20))
+b1.place(x = 20, y = 75)
+b2 = Button(tic,command = b2, text = '_',foreground = "white", background = "black", font = ("Arial",20))
+b2.place(x = 70, y = 75)
+b3 = Button(tic,command = b3, text = '_',foreground = "white", background = "black", font = ("Arial",20))
+b3.place(x = 120, y = 75)
+b4 = Button(tic,command = b4, text = '_',foreground = "white", background = "black", font = ("Arial",20))
+b4.place(x = 20, y = 140)
+b5 = Button(tic,command = b5, text = '_',foreground = "white", background = "black", font = ("Arial",20))
+b5.place(x = 70, y = 140)
+b6 = Button(tic,command = b6, text = '_',foreground = "white", background = "black", font = ("Arial",20))
+b6.place(x = 120, y = 140)
+b7 = Button(tic,command = b7, text = '_',foreground = "white", background = "black", font = ("Arial",20))
+b7.place(x = 20, y = 210)
+b8 = Button(tic,command = b8, text = '_',foreground = "white", background = "black", font = ("Arial",20))
+b8.place(x = 70, y = 210)
+b9 = Button(tic,command = b9, text = '_',foreground = "white", background = "black", font = ("Arial",20))
+b9.place(x = 120, y = 210)
+
+tic.mainloop()
