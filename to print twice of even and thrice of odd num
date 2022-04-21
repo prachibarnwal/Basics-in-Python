@@ -1,0 +1,15 @@
+'''
+    Q7) Write a function in Python which accepts an integer list
+        as arguments and replaces elements having odd values with
+            thrice its value and elements having even values with twice its
+                value.
+'''
+def liss(k):
+    for i in range(len(k)):
+        if i % 2 != 0:
+            k[i] *= 3
+        else:
+            k[i] *= 2
+    print("THE LIST AFTER MODIFIACTION IS : ",list(k))
+a = list(eval(input("Enter a list of number : ")))
+liss(a)
