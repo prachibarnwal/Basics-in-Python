@@ -1,0 +1,13 @@
+'''
+WAP to calculate sum of square of first n even numbers.
+'''
+def sqsum(n):
+    c = 0
+    for K in range(2,(n*2)+1,2):
+        m = K**2
+        c += m
+        print("Square of ",K, " IS ",m)
+    print("SUM OF FIRST ", n , "EVEN NUMBERS IS ",c)
+
+j = int(input("Enter upto how many even numbers you want to find the sum of its squares : "))
+sqsum(j)
