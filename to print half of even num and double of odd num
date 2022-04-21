@@ -1,0 +1,14 @@
+'''
+    Q8) Write a function in Python which accepts an integer List
+        as arguments and replaces elements having even values with
+            its half and elements having odd values with twice its value.
+'''
+def liss(k):
+    for i in range(len(k)):
+        if k[i] % 2 != 0:
+            k[i] *= 2
+        else:
+            k[i] //= 2
+    print("THE LIST AFTER MODIFIACTION IS : ",list(k))
+a = list(eval(input("Enter a list of number : ")))
+liss(a)
