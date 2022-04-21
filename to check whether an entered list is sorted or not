@@ -1,0 +1,14 @@
+'''
+WAF in python to receive a list of numbers as parameters and print if the list
+            is already sorted or not i.e. arranged in
+                    increasing order or not.
+'''
+def sorting(k):
+    for a in range(len(k) - 1):
+        if k[a] > k[a+1]:
+            print("THE ENTERED LIST IS NOT SORTED")
+            break
+    else:
+        print("THE ENTERED LIST IS SORTED")
+m = list(eval(input("Enter a list of numbers : ")))
+sorting(m)
