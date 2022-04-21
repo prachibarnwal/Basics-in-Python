@@ -1,0 +1,14 @@
+'''
+    Q6) Write a function in Python which accepts an integer List
+            as arguments and rearranges the List in reverse.
+
+'''
+def reverse(p):
+     m = []
+     print("THE ORIGINAL LIST IS : ",list(p))
+     for a in range(len(p)):
+         l = p.pop()
+         m.append(l)
+     print("THE LIST AFTER REVERSE IS : ", list(m))
+a = list(eval(input("Enter a list of numbers : ")))
+reverse(a)
