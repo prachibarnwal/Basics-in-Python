@@ -1,0 +1,13 @@
+'''
+    Q10) Write a function in Python to print the sum of all the
+        values which are either divisible by 3 or are divisible by 5
+            present in a List passed as the argument of the function.
+'''
+def sum53(o):
+    c = 0
+    for k in o:
+        if k % 3 == 0 or k % 5 == 0:
+            c += k
+    print("Sum of numbers divisible by 5 or 3 is : ",c)
+d  = list(eval(input("Enter a list of numbers : ")))
+sum53(d)
