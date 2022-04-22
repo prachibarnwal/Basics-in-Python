@@ -1,0 +1,15 @@
+'''
+    QNO.) 9
+        Write a function in Python which accepts a List of
+            elements as arguments and displays the elements at middle
+                position, make sure list has odd number of values.
+'''
+
+def middlenum(l):
+    n = len(l) // 2
+    if len(l) % 2 == 0:
+        print("Kindly enter a list having odd number of elements :)")
+    else:
+        print("The element at middle position is : ",l[n])
+a = list(eval(input("Enter a list of elements : ")))
+middlenum(a)
