@@ -1,0 +1,23 @@
+#WAP TO PRINT ROOTS OF A QUADRATIC EQUATION.........!!!
+import math
+import time
+print("*"*50)
+print("You are on the way to find roots of a quadratic equation. ")
+print("Quadreatic equations are of the form ax^2+bx+c")
+a = eval(input("Enter coefficient of x^2 : "))
+b = eval(input("Enter coefficient of x : "))
+c = eval(input("Enter the constant c : "))
+d = math.pow(b,2) - 4*a*c
+time.sleep(2)
+print("The DISCRIMINANT is ",d)
+time.sleep(1)
+if d == 0:
+    roots = -b / 2*a
+    print("It has real and equal roots, which is ",roots)
+elif d < 0:
+    print("No real roots exists.")
+else:
+    root1 = (-b + math.sqrt(d)) / 2*a
+    root2 = (-b - math.sqrt(d)) / 2*a
+    print("This quadratic equation has 2 roots that are : ",root1," and ",root2)
+    
