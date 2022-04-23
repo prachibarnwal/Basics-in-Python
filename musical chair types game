@@ -1,0 +1,36 @@
+import random as rd
+import time
+print("*"*30)
+time.sleep(1)
+print("Welcome To The Musical Chair Types Game " )
+time.sleep(3)
+print("Be careful , it's just MUSICAL CHAIR TYPES GAME NOT MUSICAL CHAIR GAME ITSELF........xd")
+time.sleep(2)
+num = int(input("Enter How Many Players Are There : "))
+n = []
+for k in range(num):
+    names = input("Enter Player's Name : ")
+    n.append(names)
+print("Storing the names...",end = ' ')
+for j in range(6):
+    print(".",end = ' ')
+    time.sleep(2)
+while len(n) > 1:
+    print("\nPlayers In The List Are : ",n)
+    time.sleep(2)
+    name = rd.randint(0,len(n)-1)
+    print(n[name],", YOU ARE LUCKY AS YOU'RE OUT.........xdd")
+    n.pop(name)
+    time.sleep(3)
+    print("*"*30)
+    time.sleep(4)
+print("The unluckiest person......sorry sorry.......xd \n I mean winner of the game is ",n[0])
+print("*"*30)
+print("\n")
+time.sleep(5)
+print("SORRY, ",n[0]," xd.....BUT the reason for calling you unlucky is ki \n now you have to do something.......xdddd \n and this time I am not giving any suggestions(DARE) \nso do anything you can........ON CALL......xddd")
+print("\n"," *"*50)
+time.sleep(10)
+print("ARE AB JYADA MAT SOCHO aur agar kuchh samajh nhi aa rha to mam ki tarif hi kar do call pe :)")
+print("\n")
+print("XDDDDDD.........HOPE YOU'VE enjoyed it...xdd")
