@@ -1,0 +1,19 @@
+import random as rd
+import time as time
+print("*"*32)
+print("Welcome to the Number Guessing Game.")
+print("*"*32)
+k = input("Press a key when read ")
+print("Think of a number from 1 to 50 ")
+k = input("Press a key once done")
+print("Double the number you thought of ")
+k = input("Hit a key Once Done ")
+num = rd.randrange(30,101,10)
+print("Add ",num," to it and, \n Half the sum and \n deduct the number you have thought of ")
+print("Processing........",end ='')
+for i in range(8): 
+    print(".",end = ' ')
+    time.sleep(1)
+print("*"*32)
+print("You are left with ",num // 2,".....!!!!")
+print("*"*32)
