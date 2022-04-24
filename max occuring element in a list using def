@@ -1,0 +1,19 @@
+'''
+WAF in python to return the element which is present maximum number of times
+            in a list of integers.
+                    The function prototype is given below
+                    def MAXOccurence(L):
+'''
+def MAXOccurence(L):
+    d = {}
+    for i in L:
+        if i not in d:
+            d[i] = L.count(i)
+    m = max(d.values())
+    v = 0
+    for a in d:
+        if d[a] == m:
+            v = a
+        return v
+l = list(eval(input("Enter a list of numbers : ")))
+print("Most Occuring Element in the List is : ",MAXOccurence(l))
