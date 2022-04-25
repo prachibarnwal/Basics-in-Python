@@ -1,0 +1,12 @@
+'''
+WAP to find factor of a number using loop.
+'''
+n = int(input("Enter a Number : "))
+for k in range(2,n):
+    if n % k == 0:
+        print("Factors of number ",n," is ",k)
+        continue
+    elif n % k != 0:
+        continue
+    else:
+        break
