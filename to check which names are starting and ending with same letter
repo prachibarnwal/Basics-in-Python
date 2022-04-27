@@ -1,0 +1,5 @@
+l = str(input("Enter names : "))
+l = l.split(',')
+for i in l:
+    if i[0] == i[-1]:
+        print(i)
