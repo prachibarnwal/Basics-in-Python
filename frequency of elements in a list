@@ -1,0 +1,11 @@
+a = list(eval(input("Enter the list of elements : ")))
+d = {}
+
+for val in a:
+    if val not in d:
+        d[val] = 1
+    else:
+        d[val] += 1
+for k in d:
+    print(k,'occurs ',d[k],'times')
+    
