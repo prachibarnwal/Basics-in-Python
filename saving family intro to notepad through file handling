@@ -1,0 +1,5 @@
+f = open("family.txt","w")
+f.write("THERE ARE FIVE MEMBERS IN MY FAMILY(including me as well xd).\nMere Papa-- MR. PAWAN KUMAR LAL.\nMeri Mamma-- MRS. RAJANI DEVI.\nMere Bare Bhaiya-- AKASH RANJAN.\nMere Chhote Bhaiya-- ADITYA RAJ(in short daitya and rakshas xdd).\n and last one mai khud-- PRACHI BARNWAL.")
+f.write("\n\t I LOVE MY FAMILY SO MUCH AND THAT'S ALL. :)")
+f.write("\n\t\t*"*8)
+f.close()
