@@ -1,0 +1,10 @@
+n = int(input("Enter how many students are there : "))
+f = open("result.txt","w")
+for i in range(n):
+    name = input("Enter name : ")
+    marks = float(input("Enter marks : "))
+    if marks >= 50:
+        f.write(name+" scoring "+str(marks)+" is promoted to next class.\n")
+    else:
+        f.write(name+" scoring "+str(marks)+" has to sit again for the exams.")
+f.close()
