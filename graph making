@@ -1,0 +1,23 @@
+import matplotlib.pyplot as plt
+x = ['A','B','C','D','E']
+y = [90,74,29,49,56]
+z = [100,119,120,118,90]
+plt.title("STUDENT PERFORMANCE REPORT")
+plt.xlabel("Name of Student")
+plt.ylabel("Marks Scored")
+plt.ylim((10,180))
+plt.yticks((10,20,30,40,50,60,70,80,90,100))
+plt.plot(x,y, color = 'blue', label = 'Marks')
+plt.plot(x,z, color = 'green', label = 'Attendance')
+plt.legend(loc = 'center right')
+plt.show()
+
+
+
+
+
+
+
+
+
+
