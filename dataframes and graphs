@@ -1,0 +1,11 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+a = {"Names" : ['arti','rahul','?bhii','aniket'],
+     "Physics" : [89,78,90,88],
+     "Chemistry" : [90,96,96,84],
+     "Maths" : [100,90,98,100]}
+df = pd.DataFrame(a)
+df.index = df["Names"]
+df.plot(kind = 'bar')
+print(df)
+plt.show()
