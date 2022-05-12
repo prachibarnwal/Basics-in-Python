@@ -1,0 +1,7 @@
+f = open("family.txt")
+data = f.readlines()
+print(data)
+for line in data:
+    if len(line.split()) > 5:
+        print(line)
+f.close()
