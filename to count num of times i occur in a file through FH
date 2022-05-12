@@ -1,0 +1,9 @@
+f = open("family.txt")
+data = f.read()
+print(data)
+cnt = 0
+for ch in data:
+    if ch.lower() == "i":
+        cnt += 1
+print("Number of times letter 'i' occurs is ",cnt)
+f.close()
