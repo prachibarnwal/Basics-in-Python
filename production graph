@@ -1,0 +1,9 @@
+import matplotlib.pyplot as plt
+import numpy as np
+x = np.arange(4)
+y = [9000,6700,7500,10000]
+z = [8000,7000,6500,8900]
+plt.bar(x,y, width = 0.4, color = "purple",label = "Sales")
+plt.bar(x+0.5, z, width = 0.4, color = 'pink', label = "production")
+plt.legend()
+plt.show()
