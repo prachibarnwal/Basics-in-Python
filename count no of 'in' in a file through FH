@@ -1,0 +1,10 @@
+f = open("family.txt")
+data = f.read()
+print(data)
+cnt = 0
+for ch in data.split():
+    ch  = ch.strip(",.")
+    if ch.lower() == "in":
+        cnt += 1
+print("Number of times word 'in' occurs is ",cnt)
+f.close()
