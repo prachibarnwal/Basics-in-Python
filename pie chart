@@ -1,0 +1,5 @@
+import matplotlib.pyplot as plt
+a = [5,8]
+p = ['Boys','Girls']
+plt.pie(a, labels = p, colors = ['purple','yellow'], frame  = True)
+plt.show()
