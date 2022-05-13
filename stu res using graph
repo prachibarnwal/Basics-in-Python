@@ -1,0 +1,17 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+a = {"Names" : ["Anaya","Meesha","Prinu","Roohi","Zara","Susan","Zipsy"],
+     "Physics" : [80,67,89,98,56,62,91],
+     "Chemistry" : [99,98,76,87,45,60,32],
+     "Mathematics" : [88,95,76,80,92,85,97],
+     "English" : [98,96,95,89,90,91,92],
+     "Computer" : [98,100,99,97,100,99,96]}
+df = pd.DataFrame(a)
+df.index = (df["Names"])
+df.plot(kind = 'bar', color = ['magenta','red','yellow','green','pink'])
+plt.ylim = ((10,100))
+plt.legend(loc = "upper center")
+print(df)
+plt.show()
+  
+ 
