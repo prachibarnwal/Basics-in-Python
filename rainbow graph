@@ -1,0 +1,9 @@
+import matplotlib.pyplot as plt
+names = ["Anaya","Meesha","Prinu","Roohi","Zara","Susan","Zipsy"]
+marks = [90,85,80,75,70,65,60]
+plt.title("Student's Performance")
+plt.xlabel("Names")
+plt.ylabel("Marks")
+plt.ylim((10,100))
+plt.bar(names, marks, color = ['purple','blue','indigo','green','yellow','orange','red'])
+plt.show()
