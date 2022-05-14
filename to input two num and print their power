@@ -1,0 +1,7 @@
+#WAP to input two numbers and fine a raise to the power b without using ** or pow().
+a = int(input("Enter first number : "))
+b = int(input("Enter second number : "))
+c = 1
+for i in range(0,b):
+    c *= a
+print(c)
