@@ -1,0 +1,11 @@
+a = int(input("Enter first number : "))
+b = int(input("Enter second number : "))
+if a > b:
+    c = b
+else:
+    c = a
+for i in range(c,(a * b) + 1):
+    if i % a == 0 and i % b == 0:
+        print("LCM of ", a, " and ", b, " is ",i)
+        break
+    
