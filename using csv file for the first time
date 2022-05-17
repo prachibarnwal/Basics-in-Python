@@ -1,0 +1,12 @@
+import csv
+f = open("product.csv","a")
+cw = csv.writer(f)
+cw.writerow(["Pid","Name","Cost","Qty"])
+n = int(input("How many products you want to add : "))
+for i in range(n):
+    pid = input("Enter product id : ")
+    name = input("Enter Product name : ")
+    cost = input("Enter cost : ")
+    qty = input("Enter Quantity : ")
+    cw.writerow([pid,name,cost,qty])
+f.close()
