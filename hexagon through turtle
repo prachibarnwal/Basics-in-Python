@@ -1,0 +1,25 @@
+import turtle
+import random as rd
+tnew = turtle.Turtle()
+tnew.speed(20)
+s = turtle.Screen()
+s.bgcolor("black")
+clr = ['blue','pink','yellow','magenta','orange','red','cyan','purple','indigo','green']
+#tnew.pendown()
+tnew.backward(75)
+x = 300
+while x >= 0:
+    tnew.begin_fill()
+    for i in range(6):
+        tnew.color(clr[rd.randint(0,8)], clr[rd.randint(0,7)])
+        tnew.forward(x)
+        tnew.left(60)
+    tnew.end_fill()
+    tnew.penup()
+    tnew.left(90)
+    tnew.forward(20)
+    tnew.right(90)
+    tnew.forward(10)
+    tnew.pendown()
+    x -= 20
+tnew.clone
