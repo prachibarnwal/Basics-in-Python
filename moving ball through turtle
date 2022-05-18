@@ -1,0 +1,48 @@
+import turtle as t
+def go_up():
+    ball.sety(ball.ycor() + 10)
+def go_down():
+    ball.sety(ball.ycor() - 10)
+def go_left():
+    ball.setx(ball.xcor() - 10)
+def go_right():
+    ball.setx(ball.xcor() + 10)
+def diagonal_q4():
+    ball.setx(ball.xcor() - 10)
+    ball.sety(ball.ycor() + 10)
+def diagonal_q3():
+    ball.setx(ball.xcor() - 10)
+    ball.sety(ball.ycor() - 10)
+def diagonal_q2():
+    ball.setx(ball.xcor() + 10)
+    ball.sety(ball.ycor() - 10)
+def diagonal_q1():
+    ball.setx(ball.xcor() + 10)
+    ball.sety(ball.ycor() + 10)
+
+
+wn = t.Screen()
+wn.title("BALLING")
+wn.bgcolor("cyan")
+wn.setup(600,600)
+
+ball = t.Turtle()
+ball.shape("circle")
+ball.color("magenta")
+ball.penup()
+ball.setpos(0,0)
+
+wn.listen()
+wn.onkeypress(go_up,"Up")
+wn.onkeypress(go_down,"Down")
+wn.onkeypress(go_left,"Left")
+wn.onkeypress(go_right,"Right")
+wn.onkeypress(diagonal_q4,"d")
+wn.onkeypress(diagonal_q3,"c")
+wn.onkeypress(diagonal_q2,"b")
+wn.onkeypress(diagonal_q1,"a")
+
+
+
+
+wn.mainloop()
