@@ -1,0 +1,6 @@
+#Write a pyhton program to calculate the length of string
+a = str(input("Enter the string : "))
+c = 0
+for i in range(len(a)):
+    c += 1
+print("total length of string is ",c)
