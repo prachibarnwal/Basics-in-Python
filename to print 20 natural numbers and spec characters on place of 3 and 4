@@ -1,0 +1,15 @@
+'''1.  Write a program to print natural numbers from 1 to 20 using following rules-
+    If a number is divisible by 3 print ‘***’ ,
+    If number is divisible by 4, print ‘$$$$’ 
+    Otherwise print the number.
+'''
+def natural():
+    for i in range(1,21):
+        if i % 3 == 0:
+            print("***")
+        elif i % 4 == 0:
+            print("$$$$")
+        else:
+            print(i)
+        
+natural()
