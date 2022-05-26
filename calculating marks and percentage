@@ -1,0 +1,11 @@
+maths = int(input("Enter MATHS marks : "))
+english = int(input("Enter ENGLISH marks : "))
+physics = int(input("Enter PHYSICS marks : "))
+computer = int(input("Enter COMPUTER marks : "))
+chemistry = int(input("Enter CHEMISTRY marks : "))
+n = input("Enter student's name : ")
+
+total  = maths + english + physics + computer + chemistry
+perc = (total / 500) * 100
+print("Total marks obtained is ",total)
+print(n, " got ", perc, "%.")
