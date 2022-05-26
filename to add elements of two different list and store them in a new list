@@ -1,0 +1,13 @@
+'''3.Write a program to get 2 lists L1 and L2 from user and create a
+        new list L3 by adding respective (1st element of L1
+            should be added to 1st element of L2 and so on)
+                elements of L1 and L2.
+'''
+l1 = list(eval(input("Enter a list of elements : ")))
+l2 = list(eval(input("Enter a list of elements : ")))
+l3 = []
+if len(l1) == len(l2):
+    for i in range(len(l1)):
+        l1[i] += l2[i]
+        l3.append(l1[i])
+    print("NEW LIST IS ", l3)
