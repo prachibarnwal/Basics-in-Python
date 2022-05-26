@@ -1,0 +1,9 @@
+'''2.  Write a program to print natural numbers from 1 to 20 using following rules-
+   If a number is divisible by 3 print the equal number of stars, 
+    Otherwise print the number. 
+'''
+for n in range(1,21):
+    if n % 3 == 0:
+        print("*" * n)
+    else:
+        print(n)
