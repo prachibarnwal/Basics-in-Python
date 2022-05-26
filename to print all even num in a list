@@ -1,0 +1,9 @@
+'''4.  Write a program in python to display only the even elements from a given list of numbers. 
+            For example – If given list is L = [1,2,3,4,5]
+                program should display -  2,4
+'''
+n = list(eval(input("Enter a list of numbers : ")))
+for i in n:
+    if i % 2 == 0:
+        print(i, end = " ")
+        
