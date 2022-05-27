@@ -1,0 +1,16 @@
+'''
+5.  Write a function ADD_LIST( L, N) in Python. Here L is a list of numbers and N is any number.
+        Function should add number N into each element of list L. 
+            For example if MYLIST = [2,5,3,1]
+                So, ADD_LIST(MYLIST, 3) should add number 3 into each element of  MYLIST. 
+                    So now MYLIST should be [5,8,6,4]
+'''
+def ADD_LIST(L,N):
+    print("The list you've entered is ",L)
+    for i in range(len(L)):
+        L[i] += N
+    print("The new list after modification is ",L)
+
+a = list(eval(input("Enter a list of numbers : ")))
+b = int(input("Enter the number you want to add : "))
+ADD_LIST(a,b)
