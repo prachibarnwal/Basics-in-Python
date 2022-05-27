@@ -1,0 +1,15 @@
+def MAXOccurence(A):
+    d = {}
+    for num in A:
+        if num not in d:
+            d[num] = A.count(num)
+    c = 0
+    num = 0
+    for k in d:
+        if d[k] > c:
+            c = d[k]
+            num = k
+    print(num, " occurs for ",c, " times ")
+
+L = eval(input("Enter list of numbers  : "))
+MAXOccurence(L)
