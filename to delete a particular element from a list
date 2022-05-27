@@ -1,0 +1,16 @@
+'''
+6.  Write a function DELETE_LIST( L, N) in Python. Here L is a list of numbers and N is any number.
+        Function should delete all occurrences of number N from list L. 
+            For example if MYLIST = [2,5,3,1,3,4,2,3]
+                So, DELETE_LIST(MYLIST, 3) should delete all occurrences of number 3 from MYLIST. 
+                    So now MYLIST should be [2,5,1,4,2]
+'''
+def DELETE_LIST(L,N):
+    for k in L:
+        if k == N:
+            L.remove(k)
+    print(L)
+
+a = list(eval(input("Enter a list of numbers : ")))
+b = int(input("Enter the number you want to delete : "))
+DELETE_LIST(a,b)
