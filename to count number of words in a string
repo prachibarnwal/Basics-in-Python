@@ -1,0 +1,13 @@
+'''
+8.  Write a program in python to get a string from user and count the number of words in it.
+'''
+def strcount():
+    a = input("Enter a string : ")
+    a = a.split()
+    c = 0
+    for k in a:
+        c += 1
+    print("Total number of words in the string is ", c)
+
+
+strcount()
