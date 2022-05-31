@@ -1,0 +1,6 @@
+a = input("Enter a string : ")
+r = " "
+for ch in a:
+    if ch not in r:
+        r += ch
+print(r)
