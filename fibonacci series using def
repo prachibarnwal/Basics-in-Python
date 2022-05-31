@@ -1,0 +1,13 @@
+def generatorFib(limit):
+    a = 0
+    b = 1
+    print(a)
+    print(b)
+    c = a+b
+    while c < limit:
+        print(c)
+        a = b
+        b = c
+        c = a+b
+limit = int(input("Enter the upper limit for fibonacci sreries : "))
+generatorFib(limit)
