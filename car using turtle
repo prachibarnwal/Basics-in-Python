@@ -1,0 +1,65 @@
+import turtle as t
+import time
+ht = t.Screen()
+ht.bgcolor("pink")
+ht.setup(600,600)
+ht1 = t.Turtle()
+ht1.speed(-20)
+
+
+def move():
+    ht1.setx(ht1.xcor() - 10)
+    ht1.clear()
+    draw()
+def draw():    
+    ht1.begin_fill()
+    ht1.color("silver")
+    ht1.forward(180)
+    ht1.left(90)
+    ht1.forward(50)
+    ht1.left(90)
+    ht1.forward(10)
+    ht1.right(70)
+    ht1.forward(40)
+    ht1.left(70)
+    ht1.forward(120)
+    ht1.left(60)
+    ht1.forward(40)
+    ht1.right(62)
+    ht1.forward(35)
+    ht1.left(90)
+    ht1.forward(54)
+    ht1.left(90)
+    ht1.forward(65)
+    ht1.end_fill()
+    ht1.left(100)
+    #code for tyre 1
+    ht1.color("black")
+    ht1.begin_fill()
+    ht1.circle(11)
+    ht1.end_fill()
+    #code for tyre 2
+    ht1.penup()
+    ht1.left(258)
+    ht1.forward(110)
+    ht1.pendown()
+    ht1.color("black")
+    ht1.begin_fill()
+    ht1.circle(11)
+    ht1.end_fill()
+
+
+
+draw()
+ht.listen()
+ht.onkeypress(move,"a")
+ht.mainloop()
+
+
+
+
+
+
+
+
+  
