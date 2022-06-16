@@ -1,0 +1,4 @@
+a = int(input("Enter the Bill amount : "))
+a += (a * (8/100))
+a += (a * (8/100))
+print("TOTAL AMOUNT TO BE PAID AFTER CALCULATING CGST & SGST IS : ",a)
