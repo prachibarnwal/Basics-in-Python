@@ -1,0 +1,125 @@
+from tkinter import *
+from math import *
+def one():
+    t1.insert(END,"1")
+def two():
+    t1.insert(END,"2")
+def three():
+    t1.insert(END,"3")
+def four():
+    t1.insert(END,"4")
+def five():
+    t1.insert(END,"5")
+def six():
+    t1.insert(END,"6")
+def seven():
+    t1.insert(END,"7")
+def eight():
+    t1.insert(END,"8")
+def nine():
+    t1.insert(END,"9")
+def zero():
+    t1.insert(END,"0")
+def dot():
+    n = t1.get()
+    if "." not in n:
+        t1.insert(END,".")
+def clr():
+    t1.delete(0,END)
+def add():
+    t1.insert(END, "+")
+def subtract():
+    t1.insert(END, "-")
+def multiply():
+    t1.insert(END, "*")
+def divide():
+    t1.insert(END, "/")
+def power():
+    t1.insert(END, "**")
+def remainder():
+    t1.insert(END, "%")
+def floor():
+    t1.insert(END, "//")
+
+def Calculate():
+    val = t1.get()
+    result = eval(val)
+    t1.delete(0,END)
+    t1.insert(END,str(result))
+
+def sq():
+    val = t1.get()
+    result = sqrt(eval(val))
+    t1.delete(0,END)
+    t1.insert(END,str(result))
+
+    
+
+calc = Tk()
+calc.title("Calculator.......by an AL CODER :)")
+calc.geometry("400x300")
+
+t1 = Entry(calc, foreground = "black", background = "#DDCCB8",font = ("Arial",20))
+t1.place(x = 10, y = 10)
+
+b1 = Button(calc, text = "1",command = one,foreground = "white", background = "black", font = ("Arial",15))
+b1.place(x = 10, y = 60)
+b2 = Button(calc, text = "2",command = two,foreground = "white", background = "black", font = ("Arial",15))
+b2.place(x = 60, y = 60)
+b3 = Button(calc, text = "3",command = three,foreground = "white", background = "black", font = ("Arial",15))
+b3.place(x = 110, y = 60)
+b4 = Button(calc, text = "4",command = four,foreground = "white", background = "black", font = ("Arial",15))
+b4.place(x = 160, y = 60)
+b5 = Button(calc, text = "5",command = five,foreground = "white", background = "black", font = ("Arial",15))
+b5.place(x = 10, y = 110)
+b6 = Button(calc, text = "6",command = six,foreground = "white", background = "black", font = ("Arial",15))
+b6.place(x = 60, y = 110) 
+b7 = Button(calc, text = "7",command = seven,foreground = "white", background = "black", font = ("Arial",15))
+b7.place(x = 110, y = 110)
+b8 = Button(calc, text = "8",command = eight,foreground = "white", background = "black", font = ("Arial",15))
+b8.place(x = 160, y = 110)
+b9 = Button(calc, text = "9",command = nine,foreground = "white", background = "black", font = ("Arial",15))
+b9.place(x = 10, y = 160)
+b0 = Button(calc, text = "0",command = zero,foreground = "white", background = "black", font = ("Arial",15))
+b0.place(x = 60, y = 160)
+bdt = Button(calc, text = ".",command = dot,foreground = "white", background = "black", font = ("Arial",15))
+bdt.place(x = 110, y = 160)  
+bcl = Button(calc, text = "C",command = clr,foreground = "yellow", background = "red", font = ("Arial",15))
+bcl.place(x = 160, y = 160)
+
+badd = Button(calc, text = "+",command = add,foreground = "pink", background = "blue", font = ("Arial",15))
+badd.place(x = 210, y = 60) 
+bsub = Button(calc, text = "-",command = subtract, foreground = "pink", background = "blue", font = ("Arial",15))
+bsub.place(x = 210, y = 110) 
+bmul = Button(calc, text = "*", command = multiply, foreground = "pink", background = "blue", font = ("Arial",15))
+bmul.place(x = 260, y = 60) 
+bdiv = Button(calc, text = "/",command = divide, foreground = "pink", background = "blue", font = ("Arial",15))
+bdiv.place(x = 260, y = 110) 
+bpow = Button(calc, text = "**", command = power, foreground = "pink", background = "blue", font = ("Arial",15))
+bpow.place(x = 310, y = 60) 
+bis = Button(calc, text = "=", command = Calculate,foreground = "pink", background = "blue", font = ("Arial",15))
+bis.place(x = 210, y = 160) 
+bsqrt = Button(calc, text = "sqrt",command = sq, foreground = "pink", background = "blue", font = ("Arial",15))
+bsqrt.place(x = 310, y = 110) 
+bmod = Button(calc, text = "%",command = remainder, foreground = "pink", background = "blue", font = ("Arial",15))
+bmod.place(x = 310, y = 160) 
+bfld = Button(calc, text = "//",command = floor, foreground = "pink", background = "blue", font = ("Arial",15))
+bfld.place(x = 260, y = 160) 
+
+l1 = Label(calc, text = "THANKS FOR USING :))", foreground = "#79FFBD", background = "#2AACBD", font = ("Monotype Corosiva",22))
+l1.place(x = 20, y = 210)
+calc.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
