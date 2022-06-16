@@ -1,0 +1,16 @@
+cread = int(input("Enter Current Reading of the meter : "))
+pread = int(input("Enter Previous Reading of the meter : "))
+consumed = cread - pread
+if consumed < 0:
+    print("Wrong values entered for reading : ")
+else:
+    print("Units Consumed is ", consumed)
+    if consumed <= 200:
+        bill = 4 * consumed
+    elif consumed <=400:
+        bill = 800 + (consumed - 200) * 5
+    elif consumed <= 600:
+        bill = 800 + 1000 + (consumed - 400) * 7
+    else:
+        bill = 800 + 1000 + 1400 + (consumed - 600) * 9
+    print("Bill Amount Payable is : ",bill)
