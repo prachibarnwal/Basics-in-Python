@@ -1,0 +1,11 @@
+'''
+    WAP to read context of a file and print the character
+            in capital letters.
+'''
+f = open("names.txt")
+data = f.readlines()
+for ch in data:
+    for i in ch:
+        if i.isupper():
+            print(i, end = "     ")
+      
