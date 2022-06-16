@@ -1,0 +1,5 @@
+A= input("Enter a string : ")
+rev=""
+for a in A:
+    rev = a + rev
+print(rev)
