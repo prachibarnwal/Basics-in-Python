@@ -1,0 +1,10 @@
+n = int(input("Enter any year in yyyy format : "))
+if n % 100 == 0:
+    if n % 400 == 0:
+        print("The year ", n, " is a LEAP YEAR")
+    else:
+        print("The year ", n, " is not a LEAP YEAR")
+elif n % 4 == 0:
+    print("The year ", n, " is a LEAP YEAR")
+else:
+    print("The year ", n, " is not a LEAP YEAR")
