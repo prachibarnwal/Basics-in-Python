@@ -1,0 +1,9 @@
+'''
+WAP to read content of a file named address and assuming
+    that one line contains one address count the number of
+        addresses in the file.
+'''
+f = open("address.txt")
+data = f.readlines()
+print(data)
+print("Total ADDRESSES present in the file is ",len(data))
