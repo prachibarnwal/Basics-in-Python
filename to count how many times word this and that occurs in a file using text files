@@ -1,0 +1,13 @@
+'''
+WAP to read content of a file and count how many times
+    the word 'this' or 'that' comes in the file.
+'''
+f = open("sample.txt")
+data = f.read()
+print(data)
+data = data.split()
+c = 0
+for i in data:
+    if i.lower() == "this" or i.lower() == "that":
+        c += 1
+print("Number of times the word 'this' and 'that' occurs are : ",c)
