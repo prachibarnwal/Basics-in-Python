@@ -1,0 +1,16 @@
+'''
+WAP to read context of a file named sample.txt and count how many
+    times alphabet 'n' and 'p' appears in the file.
+'''
+f = open("sample.txt")
+data = f.read()
+print(data)
+n = 0
+p = 0
+for ch in data:
+    if ch == "n":
+        n += 1
+    elif ch == "p":
+        p += 1
+print("The letter 'n' occurs : ",n ," times.")
+print("The letter 'p' occurs : ",p ," times.")
