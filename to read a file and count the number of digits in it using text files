@@ -1,0 +1,14 @@
+'''WAP to read context of a file named story.txt and count
+    the number of digits in the file.
+'''
+f = open("story.txt")
+data = f.readlines()
+print(data)
+c = 0
+for ch in data:
+    for i in ch:
+        if i.isdigit():
+            c += 1
+print("Total digits in this story is ",c)
+    
+f.close()
