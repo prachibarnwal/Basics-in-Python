@@ -1,0 +1,13 @@
+'''
+WAP to read context of a file named names.txt.
+    Count the number of vowels in the file.
+'''
+f = open("names.txt")
+data = f.readlines()
+print(data)
+c = 0
+for ch in data:
+    for i in ch:
+        if i in "AEIOUaeiou":
+            c += 1
+print("Total number of vowels in the file is : ",c)
