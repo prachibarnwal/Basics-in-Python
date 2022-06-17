@@ -1,0 +1,9 @@
+def unique(a):
+    b =[]
+    for ch in a:
+        if ch not in b:
+            b.append(ch)
+    print("THE OLD LIST IS ",a)
+    print("\nTHE NEW UNIQUE LIST IS ",b)
+a = list(eval(input("Enter a list of numbers : ")))
+unique(a)
