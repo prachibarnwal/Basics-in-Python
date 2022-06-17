@@ -1,0 +1,8 @@
+def even(a):
+    b = []
+    for i in a:
+        if i % 2 == 0:
+            b.append(i)
+    print(b)
+q = list(eval(input("Enter a list of numbers : ")))
+even(q)
