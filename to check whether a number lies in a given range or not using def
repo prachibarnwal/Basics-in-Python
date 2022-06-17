@@ -1,0 +1,9 @@
+def range(n):
+    a = int(input("Enter the lower limit : "))
+    b = int(input("Enter the upper limit : "))
+    if n >= a and n <= b:
+        print("YES, ",n," lies between ",a," and ",b)
+    else:
+        print("NO, ",n," doesn't lies between ",a," and ",b)
+c = int(input("Enter the number : "))
+range(c)
