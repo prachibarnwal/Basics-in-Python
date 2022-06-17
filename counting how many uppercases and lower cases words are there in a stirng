@@ -1,0 +1,19 @@
+def upplow(a):
+    up = 0
+    lw = 0
+    for k in a:
+        if k.isupper():
+            up += 1
+        elif k.islower():
+            lw += 1
+    print("Total letters in uppercases are : ",up)
+    print("Total letters in lowercases are : ",lw)
+n = input("Enter a string : ")
+upplow(n)
+
+
+
+
+
+
+
