@@ -1,0 +1,9 @@
+#WAP to count number of lines start with digit 1
+f = open("address.txt")
+data = f.readlines()
+print(data)
+c = 0
+for ch in data:
+    if ch[0] == "1":
+        c += 1
+print("NUMBER OF LINES STARTING WITH DIGIT 1 IS : ",c)
