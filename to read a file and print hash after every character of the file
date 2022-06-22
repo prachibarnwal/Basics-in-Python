@@ -1,0 +1,16 @@
+'''
+WAF definition for HashDisplay() in python that would display the
+    entire content of the file MATTER.txt in the desired format.
+        Example: if the file MATTER.txt has the following content stored in it:
+            THE WORLD IS ROUND
+        The function HashDisplay() should display the following content:
+            T#H#E# #W#O#R#L#D# #I#S #R#O#U#N#D#
+'''
+def HashDisplay():
+    a = open("MATTER.txt")
+    data = a.read()
+    print(data)
+    print("NEW MODIFIED TEXT IS : \n")
+    for ch in data:
+        print(ch, end = "#")
+HashDisplay()
