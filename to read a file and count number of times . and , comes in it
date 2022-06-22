@@ -1,0 +1,9 @@
+#WAP to count number of times ',' and '.' comes in the file
+f = open("story.txt")
+data = f.read()
+print(data)
+c = 0
+for i in data:
+    if i == "." or i == ",":
+        c += 1
+print("NUMBE ROF TIMES ',' and '.' COMES IN THE FILE IS : ",c)
