@@ -1,0 +1,9 @@
+#WAP to read a file and count number of times 'k' comes in the file.
+f = open("story.txt")
+data = f.read()
+c = 0
+print(data)
+for d in data:
+    if d == 'k':
+        c += 1
+print("NUMBER OF TIMES 'k' COMES IN THIS FILE IS : ",c)
