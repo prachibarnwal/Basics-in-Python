@@ -1,0 +1,31 @@
+import pygame
+import random as rd
+import time
+from pygame import mixer
+p = pygame.image.load("code.webp")
+
+
+win = pygame.display.set_mode((600,700))
+while True:
+    r = rd.randint(0,255)
+    g = rd.randint(0,255)
+    b = rd.randint(0,255)
+    clr = (r, g, b)
+    win.fill(clr)
+    win.blit(p, (100,100))
+    time.sleep(3)
+
+    mixer.init()
+    mixer.music.load("C:/Users/Prachi Barnwal/Desktop/python files/anime.mp3.mp3")
+    mixer.music.set_volume(0.5) 
+    mixer.music.play()
+    time.sleep(5)
+    mixer.music.stop()
+
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
+
+    pygame.display.update()
