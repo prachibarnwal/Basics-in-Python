@@ -1,0 +1,9 @@
+#WAP to read a file and count number of spaces in it
+f = open("story.txt")
+data = f.read()
+print(data)
+c = 0
+for ch in data:
+    if ch.isspace():
+        c += 1
+print("Total number of spaces in this file is : ",c)
