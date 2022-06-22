@@ -1,0 +1,24 @@
+import pygame
+import random as rd
+import time
+from pygame import mixer
+p = pygame.image.load("plane.jpg")
+
+
+win = pygame.display.set_mode((600,700))
+y = 300
+
+while True:
+    clr = (0, 0, 0)
+    win.fill(clr)
+    win.blit(p, (10,y))
+    time.sleep(0.1)
+    y -= 10
+    
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
+
+    pygame.display.update()
