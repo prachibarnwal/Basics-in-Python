@@ -1,0 +1,8 @@
+f = open("address.txt")
+data = f.readlines()
+print(data)
+print("\nall odd lines are : ")
+for i in range(len(data)):
+    if i % 2 == 0:
+        print(data[i])
+f.close()
