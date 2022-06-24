@@ -1,0 +1,10 @@
+def rev_text():
+    f = open("story.txt")
+    data = f.read().split()
+    print(data)
+    print("\n")
+    print("Text after reversing is : ")
+    for i in data:
+        print(i[::-1], end = " ")
+    f.close()
+rev_text()
