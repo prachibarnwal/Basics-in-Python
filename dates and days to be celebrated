@@ -1,0 +1,80 @@
+import time
+import pickle
+f = open("days.txt","ab")
+d = {"01-05" : "International Worker's Day",
+     "03-05" : "Public Holiday and National Polish Day",
+     "04-05" : "Star War's Day",
+     "07-05" : "International Space Day",
+     "08-05" : "National Coconut Cream Pie Day....xdd and National Teacher Day as well :)",
+     "09-05" : "Victory Day",
+     "10-05" : "Clean-Up your Room day",
+     "11-05" : "National Technology Day",
+     "12-05" : " International day of Plant Health",
+     "15-05" : "The International Days of Families",
+     '16-05' : "International Day of Light ",
+     "17-05" : "WORLD'S HYPERTENSION DAY",
+     "18-05" : "International Museum Day",
+     "20-05" : "World's Bee Day",
+     "21-05" : "National Anti-Terrorism Day ",
+     "22-05" : "National Vanilla Pudding Day..xd",
+     "23-05" : "Eat MORE Fruits and Vegetables Day",
+     "24-05" : "Brothers Day",
+     "25-05" : "Towel Day",
+     "26-05" : "National Cherry Dessert Day",
+     "27-05" : "National Gray Day",
+     "28-05" : "International Day of Action for Women's",
+     "29-05" : "Everest Day",
+     "30-05" : "National Memorial Day",
+     "31-05" : "World NO Tobacco Day",
+     "01-06" : "World Milk Day & Global Parents Day ",
+     "02-06" : "National Rocky Road Day",
+     "03-06" : "National Donut Day and National Chocolate Macaroon Day",
+     "04-06" : "National Black Bear Day and many more ",
+     "05-06" : "World Environment Day",
+     "07-06" : "World Food Safety Day",
+     "08-06" : "World Oceans Day & National Best Friend Day",
+     "09-06" : "Strawberry Rhubarb Pie Day",
+     "10-06" : "National Black Cow Day & National Ball Point Pen Day ",
+     "11-06" : "National German Chocolate Cake Day & National Corn on the Cob Day",
+     "13-06" : "National Sewing Machine Day",
+     "14-06" : "National Bourbon Day",
+     "15-05" : "Global Wind Day",
+     "16-06" : "Cherry Tart Day & Apple Strudel Day",
+     "18-06" : "International Picnic Day",
+     "19-06" : "National Reading Day & National Watch Day",
+     "20-06" : "National Vanilla Milkshake Day......xd...not compulsory to be celebrated xd",
+     "21-06" : "International Yoga Day & World Music Day",
+     "22-06" : "World Rainforest Day & World Bathing Day......xdd & National Chocolate Eclairs day xdd(yummy yummy eclairs)",
+     "23-06" : "International Olympic Day & International Window's Day",
+     "24-06" : "International Fairy Day & National Pralines Day & National Handshake Day",
+     "25-06" : "National strawberry parfait day"}
+pickle.dump(d,f)
+print("\nKindly note that the code has been made just for fun :)\n")
+while True:
+    print("Press 1 - to Search for a particular date.")
+    print("Press 2 - to Quit")
+    a = int(input("Enter what you want to do : "))
+    if a == 1:
+        print("*"*40)
+        n = input("Enter the date ( format should be like : dd-mm) : ")
+        for ch in d:
+            if ch == n:
+                print("*"*40)
+                print("The day on ",n, " to be celebrated is ",d[ch])
+                break
+        else:
+            print("*"*40)
+            print("Currently there is not any day stored in the file on date ",n)
+    elif a == 2:
+        print("*"*40)
+        break
+    else:
+        print("aapko bola tha na ki 2 hi options hain ya to 1 ya to 2 to phir over-smart banke kuchhh aur press karne ki kya jaroorat thi??")
+        time.sleep(4)
+        print("\n ho gye khush code ko break karwake.................xxddddd")
+        print("\n jaao ab agar phir se koi date check krni h to dobara run karo code ko :)")
+        print("*"*40)
+        break
+print("Hope you've enjoyed :)")
+
+f.close()
