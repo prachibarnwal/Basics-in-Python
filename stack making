@@ -1,0 +1,34 @@
+st = []
+def push(st,val):
+    st.append(val)
+
+def pop(st):
+    if len(st) == 0:
+        print("Underflow - Stack is Empty")
+    else:
+        val = st.pop()
+        print("Deleted Element is : ",val)
+
+def peek(st):
+    print("Top Most Element is : ",st[-1])
+
+
+while True:
+    print("Press 1 - To Push")
+    print("Press 2 - To Pop")
+    print("Press 3 - To Peek")
+    print("Press 4 - To Display")
+    print("Press 5 - To Quit")
+    n = int(input("Enter Your Choice : "))
+    if n == 1:
+        val = input("Enter a value you want to be INSERTED : ")
+        push(st,val)
+    elif n == 2:
+        a = st.pop()
+        print("Deleted Element is : ",a)
+    elif n ==3:
+        a = peek(st)
+    elif n == 4:
+        print(st)
+    elif n == 5:
+        break
