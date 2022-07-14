@@ -1,0 +1,11 @@
+'''
+to print sum of series like :
+                        x+x^2+X^3+......+x^n
+'''
+n = int(input("Enter n : "))
+x = int(input("Enter x : "))
+s = 0
+for i in range(1,n+1):
+    s += x**i
+print(s)
+    
