@@ -1,0 +1,175 @@
+import pickle
+import os
+
+def addEmployee():
+    f = open("empl.dat","ab")
+    g = open("empl.dat","rb")
+    eid = int(input("Enter Employee Id : "))
+    name = input("Enter Employee Name : ")
+    sal = int(input("Enter Salary: "))
+    e = [eid,name,sal]
+    try:
+        while True:
+            d = pickle.load(g)
+            if d[0] == eid:
+                print("*"*40)
+                print("Employee with this ID already EXISTS.")
+                print("*"*40)
+                return
+    except:
+        pickle.dump(e,f)
+        print("*"*40)
+        print("Employee ADDED SUCCESSFULLY.....!!")
+        print("*"*40)
+        f.close()
+        g.close()
+    print("\n","-"*40,"\n")
+
+def showEmployees():
+    f = open("empl.dat","rb")
+    try:
+        print("-"*40)
+        print("E.ID\tName\tSalary")
+        print("-"*40)
+        while True:
+            d = pickle.load(f)
+            print(d[0],"\t",d[1],"\t",d[2])
+    except:
+        f.close()
+    print("\n","-"*40,"\n")
+
+def empSearch():
+    print("*"*40)
+    f = open("empl.dat","rb")
+    a = int(input("Enter the ID of the EMPLOYEE to be SEARCHED : "))
+    print("-"*40)
+    try:
+        while True:
+            d = pickle.load(f)
+            if d[0] == a:
+                print("FOUND")
+                print("Name is ", d[1], "Salary is ", d[2])
+                print("-"*40)
+                break
+    except:
+        print("Employee Not Found.")
+        f.close()
+
+def deleteEmployee():
+    c = 0
+    print("*"*40)
+    f = open("empl.dat","rb")
+    g = open("temp.dat","wb")
+    a = int(input("Enter the ID of the EMPLOYEE to be DELETED : "))
+    print("-"*40)
+    try:
+        while True:
+            d = pickle.load(f)
+            if d[0] == a:
+                print("*"*40)
+                print("Employee ", d[1], " Deleted...!")
+                print("*"*40)
+                c += 1
+            else:
+                pickle.dump(d,g)
+    except:
+        if c == 0:
+            print("No Employee Found with this ID ")
+        f.close()
+        g.close()
+        os.remove("empl.dat")
+        os.rename("temp.dat","empl.dat")
+
+def modifyEmployee():
+    c = 0
+    print("*"*40)
+    f = open("empl.dat","rb")
+    g = open("temp.dat","wb")
+    a = int(input("Enter the ID of the EMPLOYEE to be MODIFIED : "))
+    print("-"*40)
+    try:
+        while True:
+            d = pickle.load(f)
+            if d[0] == a:
+                print("*"*40)
+                print("employee with ID ", d[0], " exists.")
+                print("*"*40,"\n")
+                print("Press 1 - modify name")
+                print("Press 2 - update salary")
+                print("Press 3 - Change Employee Id\n")
+                ch = int(input("Press what you want to do with this employee id : "))
+                if ch == 1:
+                    name = input("Enter Name : ")
+                    d[1] = name
+                    pickle.dump(d,g)
+                    print("-"*40)
+                    print("NAME UPDATED SUCCESSFULLY......!!")
+                    print("-"*40)
+                    c += 1
+                elif ch == 2:
+                    sal = int(input("Enter Salary : "))
+                    d[2] =sal
+                    pickle.dump(d,g)
+                    print("-"*40)
+                    print("SALARY UPDATED SUCCESSFULLY")
+                    print("-"*40)
+                    c += 1
+                elif ch == 3:
+                    empid = int(input("Enter Employee Id : "))
+                    d[0] = empid
+                    pickle.dump(d,g)
+                    print("-"*40)
+                    print("ID UPDATED SUCCESSFULLY")
+                    print("-"*40)
+                    c += 1
+                    
+                else:
+                    print("You've pressed some other digit....")
+                    break
+            else:
+                pickle.dump(d,g)
+    except:
+        if c == 0:
+            print("No Employee Found with this ID ")
+        f.close()
+        g.close()
+        os.remove("empl.dat")
+        os.rename("temp.dat","empl.dat")
+
+
+        
+        
+    
+while True:
+    print("--------------ZIPSY Pvt. Ltd. -----------------\n")
+    print("Press 1 - To Add an Employee")
+    print("Press 2 - To Delete an Employee")
+    print("Press 3 - To Search an Employee ")
+    print("Press 4 - To Modify Employee Details")
+    print("Press 5 - To Show All Employees")
+    print("Press 6 - To Exit")
+    print("*"*40)
+    n = int(input("Enter Your Choice : "))
+    print("*"*40)
+    if n == 1:
+        addEmployee()
+    elif n == 2:
+        deleteEmployee()
+    elif n == 3:
+        empSearch()
+    elif n == 4:
+        modifyEmployee()
+    elif n == 5:
+        showEmployees()
+    elif n == 6:
+        print("\t\tThanks for Visiting.........!!")
+        print("*"*40)
+        break
+    else:
+        print("Choices 6 hi the bas.......7th digit jaisa to koi option hi nhi tha na....jaao jaake wapis se run karo -_-  .....!!")
+        break
+
+
+
+
+
