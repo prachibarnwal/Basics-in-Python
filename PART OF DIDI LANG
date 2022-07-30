@@ -1,0 +1,21 @@
+commands  ={"dedo_didi" : "print",
+                "lelo_didi" : "input",
+                "agar" : "if",
+                "nahi to " : "elif",
+                "warna" : "else"}
+f = open("text file.txt","r")
+g = open("prg1.py","w")
+data = f.readlines()
+for line in data:
+    for k in commands:
+        if k in line:
+            line = line.replace(k,commands[k])
+            g.write(line)
+            break
+g.close()
+import prg1
+f.close()
+
+
+
+    
