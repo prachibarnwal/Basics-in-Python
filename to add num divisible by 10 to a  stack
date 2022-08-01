@@ -1,0 +1,22 @@
+'''
+Given a list of numbers, Write Python Code to add all Multiple of 10 from
+the list in the stack.
+Pop all the elements and display one by one
+'''
+l = list(eval(input("Enter a List of Numbers : ")))
+stack = []
+def push(stack):
+    for i in l:
+        if i % 10 == 0:
+            stack.append(i)
+    
+def pop(a):
+    if len(a) == 0:
+        print("UNDERFLOW")
+    else:
+        for i in range(len(a)):
+            n = a.pop()
+            print("DELETED ELEMENT IS ", n)
+            
+push(stack)
+pop(stack)
