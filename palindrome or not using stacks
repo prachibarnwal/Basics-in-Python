@@ -1,0 +1,34 @@
+stack = []
+def Push(stack, val):
+    stack.append(val)
+
+def Pop(stack):
+    if len(stack) == 0:
+        return "Underflow"
+    else:
+        val = stack.pop()
+        return val
+
+text = input("Entr a string : ")
+for ch in text:
+    Push(stack,ch)
+
+for ch in text:
+    val = Pop(stack)
+    if ch == val:
+        pass
+    else:
+        print(text, "  is Not a Palindrome")
+        break
+else:
+    print(text, ' is a Palindrome')
+
+
+
+
+
+
+
+
+
+    
