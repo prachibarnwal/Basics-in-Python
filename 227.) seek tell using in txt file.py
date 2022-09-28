@@ -1,0 +1,12 @@
+f1 = open("check.txt","w")
+f1.write("One best book is equal to hundred good friends, but one good friend is equal to a library.")
+f1.close()
+
+f1 = open("check.txt","r")
+print(f1.tell(), end = "#")
+f1.seek(5,0)
+data = f1.read(10)
+print(data)
+d = f1.read(5)
+print(d)
+f1.close()
