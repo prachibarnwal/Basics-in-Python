@@ -1,0 +1,223 @@
+import mysql.connector as sql
+
+mydb = sql.connect(host = "localhost", user = "root", password = "")
+cr = mydb.cursor()
+q = "create database medicine_shop"
+cr.execute(q)
+q = "use medicine_shop"
+cr.execute(q)
+q = '''create table medicine(mid integer primary key,
+mname varchar(30) not null,
+manufacturer varchar(50),
+dateofm date,
+dateofexp date not null,
+mg float,
+content varchar(100),
+price float,
+qty integer)'''
+cr.execute(q)
+#BILLS
+q = '''create table bills(store_name varchar(15) not null,
+cname varchar(20),
+date_of_pur date,
+amount float)'''
+cr.execute(q)
+
+mydb.commit()
+print("DATABASE INITIALISED")
+
+
+#library import
+import mysql.connector as sql
+import time
+
+#setting conection
+mydb = sql.connect(host = "localhost", user = "root", password = "",database = "MEDICINE_SHOP")
+#login screen
+if mydb. is_connected():
+    print("Yayyyiiiieeee......Connected......!!!!")
+
+    uname = input("Enter UserName : ")
+    pwd = input("Enter Password : ")
+    q = "SELECT * FROM USER WHERE uname = %s and pwd = %s"
+    d = (uname,pwd)
+    cr = mydb.cursor()
+    cr.execute(q,d)
+    res = cr.fetchone()
+    if res == None:
+        print("Invalid Username and Password")
+    else:
+        print("Access Granted.....Welcome.......!!!")
+
+#function to add a medicine       
+def addmedicine():
+    print("\n")
+    print("😇🙃"*15)
+    print("\n")
+    mid = input("Enter Medicine Id : ")
+    name = input("Enter Medicine Name : ")
+    mf = input("Enter Name of Manufacturer : ")
+    dom = input("Enter Date of Manufacture : ")
+    doe = input("Enter Date of Expiry : ")
+    mg = input("Enter the Weight (in mg) : ")
+    content = input("Enter Content : ")
+    price = input("Enter the Price : ")
+    qty = input("Enter the Quantity : ")
+    print("\nSTORING MEDICINE DETAILS.......")
+    time.sleep(2)
+    q = "insert into medicine values(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    data = (mid,name,mf,dom,doe,mg,content,price,qty)
+    cr = mydb.cursor()
+    cr.execute(q,data)
+    print("\nMedicine Inserted.......!!!!")
+    print("👍😎"*15)
+    print("\n")
+    mydb.commit()
+
+#function to show a medicine
+def showmedicine():
+    print("🤩😄"*15)
+    q = "select * from medicine"
+    cr = mydb.cursor()
+    cr.execute(q)
+    res = cr.fetchall()
+    print("\n")
+    print("-"*95)
+    print("Id\tName\t\tDate_of_Expiry\t\tPrice\t\tQty")
+    print("-"*95)
+    for k in res:
+        print(k[0],"\t",k[1],"\t\t",k[4],"\t\t",k[-2],"\t\t",k[-1])
+        print("-"*95)
+    print("\n")
+
+
+#function to restock a medicine
+def restock():
+    mid = input("Enter the Medicine ID : ")
+    qty = input("Enter the Quantity to Add : ")
+    q = "update medicine set qty = qty + %s where mid = %s"
+    d = (qty,mid)
+    cr = mydb.cursor()
+    cr.execute(q,d)
+    print("\nMedicine Restocked......!!\n")
+    mydb.commit()
+
+
+#function to search a medicine
+def search():
+    mid = input("Enter the Medicine ID : ")
+    q = "select * from medicine where mid = "+mid
+    cr = mydb.cursor()
+    cr.execute(q)
+    k = cr.fetchone()
+    if k == None:
+        print("\nNo Medicine Available With This ID\n")
+        print("😣😣"*15)
+    else:
+        print("\nMedicine Found......!!")
+        print("😀😀"*15)
+        print("\n")
+        print("-"*95)
+        print("Id\tName\t\tDate_of_Expiry\t\tPrice\t\tQty")
+        print("-"*95)
+        print(k[0],"\t",k[1],"\t\t",k[4],"\t\t",k[-2],"\t\t",k[-1])
+        print("-"*95)
+    print()
+
+
+#Function to delete a medicine
+def deletem():
+    mid = input("Enter the Medicine ID : ")
+    q = "delete from medicine where mid = "+mid
+    cr = mydb.cursor()
+    cr.execute(q)
+    print("\nMedicine Deleted......!!\n")
+    print("😒😒"*15)
+    print("\n\n")
+    mydb.commit()
+
+
+#function for billing
+def billing():
+    cname = input("Enter Customer's Name : ")
+    date = input("Enter the Date of Purchase (in yyyy_mm-dd) : ")
+    amount = 0
+    cr = mydb.cursor()
+        
+    while True:
+        mid = input("Enter Medicine id : ")
+        q = "select * from medicine where mid = "+mid
+        cr.execute(q)
+        res = cr.fetchone()
+        if res == None:
+            print("\nNo Medicine Available With This ID\n")
+            print("😣😣"*15)
+        else:
+            price = int(res[-2])
+            print("Price of Medicine is : ",price)
+            qty = int(input("Enter the Quantity to be Purchased : "))
+            bill = price * qty
+            amount += bill
+            print("Amount for Medicine ",amount)
+            ans = input("Are There More Medicine to be Purchased : ")
+            if ans.lower() == "no":
+                print("Calculating Your Bill ")
+                break
+    print("Total Bill Amount is : ",amount)
+    q = "insert into bills values(%s,%s,%s,%s)"
+    data = ("MEDICAL_STORE",cname,date,amount)
+    cr.execute(q,data)
+    mydb.commit()
+
+#FUNCTION TO DISPLAY PREVIOUS BILLS
+def displaymed():
+    print("🤩😄"*15)
+    q = "select * from bills where Store_name = 'medical_store'"
+    cr = mydb.cursor()
+    cr.execute(q)
+    res = cr.fetchall()
+    print("\n")
+    print("-"*105)
+    print("shop_name\t\tcustomer_name\t\tDate_of_Pur\t\tAmount")
+    print("-"*105)
+    for k in res:
+        print(k[0],"\t\t",k[1],"\t\t\t",k[-2],"\t\t",k[-1])
+        print("-"*105)
+        print("\n")
+
+#main code
+while True:
+    print("😇🙃"*15)
+    print("\t\t\tAL Medical Store")
+    print("😇🙃"*15)
+    print("\n")
+    print("Press 1 - Add New Medicine")
+    print("Press 2 - Restock a Medicine")
+    print("Press 3 - Show All Medicines")
+    print("Press 4 - Search a Medicine")
+    print("Press 5 - Delete a Medicine")
+    print("Press 6 - Billing")
+    print("Press 7 - Display Previous Bills")
+    print("press 8 - to Exit")
+    print("\n")
+    opt = int(input("Enter Your Choice : "))
+    if opt == 1:
+        addmedicine()
+    elif opt == 2:
+        restock()
+    elif opt == 3:
+        showmedicine()
+    elif opt == 4:
+        search()
+    elif opt == 5:
+        deletem()
+    elif opt == 6:
+        billing()
+    elif opt == 7:
+        displaymed()
+    elif opt == 8:
+        print("THANKS FOR VISITING..!!")
+        print("✌😄"*15)
+        print("\t\t Have a Medicine-Free Life Ahead")
+        print("*"*95)
+        break
