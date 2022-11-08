@@ -1,0 +1,679 @@
+#module import
+import mysql.connector
+#establishing connection
+con = mysql.connector.connect(host = 'localhost',user = "root", password = "")
+cur = con.cursor()
+#database making
+q = "CREATE DATABASE SPORTS_CLUB"
+cur.execute(q)
+#to activate database
+q = "use sports_club"
+cur.execute(q)
+#table making for users and passwors
+q = "create table users (uname varchar(30) primary key, passw varchar(20))"
+cur.execute(q)
+#inserting values to users table
+q = "insert into users values ('prachi','p123')"
+cur.execute(q)
+q = "insert into users values ('jiya','j123')"
+cur.execute(q)
+#table making for members details
+q = '''create table member (
+mid integer primary key,
+mname varchar(40) not null,
+age integer,
+doj date,
+phone varchar(20),
+email varchar(60) unique,
+address varchar(100),
+mtype varchar(20))'''
+cur.execute(q)
+#table for sports details
+q = '''create table sports(
+sid integer primary key,
+sname varchar(40) not null,
+category varchar(10),
+fees integer,
+equipment varchar(100))'''
+cur.execute(q)
+#table making for coach details
+q = '''create table coach(
+cid integer primary key,
+cname varchar(50) not null,
+sid integer,
+experience integer,
+phone varchar(30),
+email varchar(100),
+address varchar(100))'''
+cur.execute(q)
+
+#table making for batch details
+q = '''create table batches
+(bid integer primary key,
+bname varchar(60),
+days varchar(60),
+btime varchar(10),
+cid integer,
+fees integer)'''
+cur.execute(q)
+#table making for enrollments
+q = '''create table enrollments
+(bid integer,
+mid integer);
+cur.execute(q)
+con.commit()
+
+#module import
+import mysql.connector
+from prettytable import PrettyTable
+import random as rd
+
+#establishing connection
+con = mysql.connector.connect(host = 'localhost',user = "root", password = "", database = "sports_club")
+cur = con.cursor()
+
+#function for welcoming a user
+def welcome():
+    print("🐻❄"*15)
+    print("\t\tAL SPORTS COMPLEX")
+    print("🐻❄"*15)
+    print("\t\t 1 -- manage members")
+    print("\t\t 2 -- manage sports")
+    print("\t\t 3 -- manage coaches")
+    print("\t\t 4 -- manage batches")
+    print("\t\t 5 -- enroll member")
+    print("\t\t 6 -- show enrollments")
+    print("\t\t 7 -- exit")
+    ch = int(input("Enter Your Choice : "))
+    return ch
+#valid phone num or not
+def isPhoneValid(num):
+    if len(num) != 10:
+        return False
+    elif not num.isdigit():
+        return False
+    elif num[0] not in ("6789"):
+        return False
+    else:
+        return True
+#function to enroll a member
+def enroll_member():
+    mid = input("Enter Member Id : ")
+    bid = input("Enter Batch Id : ")
+    q = "insert into enrollments values(%s,%s)"
+    data = (bid,mid)
+    cur.execute(q,data)
+    con.commit()
+    print("ENROLLED......!!!")
+
+#function to show all enrollments
+def show_enrollments():
+    q = "select mname,bname,cname from enrollments,member,batches,coach where member.mid = enrollments.mid and batches.bid = enrollments.bid and batches.cid = coach.cid"
+    cur.execute(q)
+    res = cur.fetchall()
+    myTable = PrettyTable(["M_Name","B_Name","C_Name"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    print("\n\n\n\n")
+
+#function to add a member
+def addMember():
+    while True:
+        print("📖✏"*15)
+        print("Press 1 - Add a New Member")
+        print("Press 2- to go to the Main Menu")
+        print("📖✏"*15)
+        ch = int(input("Enter Your Choice : "))
+        if ch == 1:
+            q = "select max(mid) from MeMber"
+            cur.execute(q)
+            res = cur.fetchone()
+            if res[0] == None:
+                mid = 11
+            else:
+                mid = res[0] + 1
+            print("🦄🐾"*15)
+            print("\t\tADDING A NEW MEMBER")
+            print("🦄🐾"*15)
+            print("Enter Details for Member Id : ",mid)
+            mname = input("Enter Name of The Member : ")
+            age = int(input("Enter Age of The Member : "))
+            doj = input("Enter Date of Joining (yyyy-mm-dd) : ")
+            if len(doj) == 10 and doj[0:4].isdigit() and doj[4] == '-' and doj[5:7].isdigit() and doj[7] == '-' and doj[8:].isdigit():
+                pass
+            else:
+                print("Invalid Date....Try Again")
+                continue 
+            phone = input("Enter Phone Number : ")
+            if isPhoneValid(phone):
+                pass
+            else:
+                print("INVALID PHONE NUMBER")
+                continue
+            email = input("Enter Email-id : ")
+            address = input("Enter Address : ")
+            mtype = input("Enter Membership Type (Monthly / Quaterly / Yearly ) : ")
+            data = (mid,mname,age,doj,phone,email,address,mtype)
+            q = "insert into member values(%s,%s,%s,%s,%s,%s,%s,%s)"
+            cur.execute(q,data)
+            con.commit()
+            print("\tMEMBER ADDED SUCCESSFULLY")
+            print("🦄🐾"*21)
+            print("\n\n\n\n")
+        else:
+            break
+
+#Function to display details of all members
+def displayMember():
+    q = "select * from member"
+    cur.execute(q)
+    res = cur.fetchall()
+    print("👀🦚"*15)
+    print("\t\tMEMBER DETAILS")
+    print("👀🦚"*15)
+    print("\n\n\n\n")
+    myTable = PrettyTable(["Mid","Mname","Age","D_O_J","Phone","Email","Address","Mtype"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    print("\n\n\n\n")
+
+#function to search a particular member
+def searchMember():
+    mid = int(input("Enter Member id to be Searched : "))
+    q = "select * from member where mid = "+str(mid)
+    cur.execute(q)
+    res = cur.fetchall()
+    if len(res) == 0:
+        print("No Member Found")
+        return
+    print("💻📕"*15)
+    print("\t\tMEMBER DETAILS")
+    print("💻📕"*15)
+    myTable = PrettyTable(["Mid","Mname","Age","D_O_J","Phone","Email","Address","Mtype"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    print("\n\n\n")
+    print("💻📕"*15)
+
+#function to delete record of a member
+def deleteMember():
+    mid = int(input("Enter Member id to be Deleted : "))
+    q = "select * from member where mid = "+str(mid)
+    cur.execute(q)
+    res = cur.fetchall()
+    if len(res) == 0:
+        print("No Member Found")
+        return
+    print("🎃🎡"*15)
+    print("\t\tMEMBER DETAILS")
+    print("🎃🎡"*15)
+    myTable = PrettyTable(["Mid","Mname","Age","D_O_J","Phone","Email","Address","Mtype"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    ch = input("Are You Sure You Want To Delete The Details Of The Member Shown Above (yes/no) : ")
+    if ch.lower() == 'yes':
+        print("🎃🎡"*15)
+        q = "DELETE from member where mid = "+str(mid)
+        cur.execute(q)
+        con.commit()
+        print("\t\tMEMBER DETAILS DELETED")
+        print("🎃🎡"*15)
+
+#Function to manage records of members   
+def manage_members():
+    while True:
+        print("🌌🌕"*15)
+        print("\t\t 1 -- add a new member")
+        print("\t\t 2 -- display all members")
+        print("\t\t 3 -- search a member")
+        print("\t\t 4 -- delete a member")
+        print("\t\t 5 -- go back to main menu")
+        print("🌌🌕"*15)
+        ch = int(input("Enter Your Choice : "))
+        if ch == 1:
+            addMember()
+        elif ch == 2:
+            displayMember()
+        elif ch == 3:
+            searchMember()
+        elif ch == 4:
+            deleteMember()
+        elif ch == 5:
+            break
+        else:
+            print("Invalid Digit Pressed")
+            print("\n")
+
+#function to add a sport
+def addSport():
+    while True:
+        print("📖✏"*15)
+        print("Press 1 - Add a Sport")
+        print("Press 2- to go to the Main Menu")
+        print("📖✏"*15)
+        ch = int(input("Enter Your Choice : "))
+        if ch == 1:
+            q = "select max(sid) from sports"
+            cur.execute(q)
+            res = cur.fetchone()
+            if res[0] == None:
+                sid = 10
+            else:
+                sid = res[0] + 1
+            print("🦄🐾"*15)
+            print("\t\tADDING A NEW SPORT")
+            print("🦄🐾"*15)
+            print("Enter Details for the Sport having sid : ",sid)
+            sname = input("Enter Name of The Sport : ")
+            category = input("Enter Category of the Sport (INDOOR / OUTDOOR) : ")
+            fees = int(input("Enter Fees Per Month : "))
+            equipment = input("Enter Equipments Required For "+sname+" : ")
+            data = (sid,sname,category,fees,equipment)
+            q = "insert into sports values(%s,%s,%s,%s,%s)"
+            cur.execute(q,data)
+            con.commit()
+            print("\tSPORTS DETAILS ADDED SUCCESSFULLY")
+            print("🦄🐾"*21)
+            print("\n\n\n\n")
+        else:
+            break
+
+#Function to display details of all SPORTS
+def displaySport():
+    q = "select * from sports"
+    cur.execute(q)
+    res = cur.fetchall()
+    print("👀🦚"*15)
+    print("\t\tSPORTS DETAILS")
+    print("👀🦚"*15)
+    print("\n\n\n\n")
+    myTable = PrettyTable(["Sid","Sname","Category","Fees","Equipments"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    print("\n\n\n\n")
+
+#function to search a particular sport
+def searchSport():
+    mid = int(input("Enter Sport id to be Searched : "))
+    q = "select * from sports where sid = "+str(mid)
+    cur.execute(q)
+    res = cur.fetchall()
+    if len(res) == 0:
+        print("No Sport Details Found")
+        return
+    print("💻📕"*15)
+    print("\t\tSPORT DETAILS")
+    print("💻📕"*15)
+    myTable = PrettyTable(["Sid","Sname","Category","Fees","Equipments"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    print("\n\n\n")
+    print("💻📕"*15)
+
+#function to delete record of a sport
+def deleteSport():
+    mid = int(input("Enter Sport id to be Deleted : "))
+    q = "select * from sports where sid = "+str(mid)
+    cur.execute(q)
+    res = cur.fetchall()
+    if len(res) == 0:
+        print("No Sport Details Found")
+        return
+    print("🎃🎡"*15)
+    print("\t\tSPORT DETAILS")
+    print("🎃🎡"*15)
+    myTable = PrettyTable(["Sid","Sname","Category","Fees","Equipments"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    ch = input("Are You Sure You Want To Delete The Details Of The Sport Shown Above (yes/no) : ")
+    if ch.lower() == 'yes':
+        print("🎃🎡"*15)
+        q = "DELETE from SPORTS where sid = "+str(mid)
+        cur.execute(q)
+        con.commit()
+        print("\t\tSPORTS DETAILS DELETED")
+        print("🎃🎡"*15)
+        
+#Function to manage records of sports 
+def manage_sports():
+    while True:
+        print("🌌🌕"*15)
+        print("\t\t 1 -- add a new sport")
+        print("\t\t 2 -- display all sport details")
+        print("\t\t 3 -- search a sport")
+        print("\t\t 4 -- delete a sport")
+        print("\t\t 5 -- go back to main menu")
+        print("🌌🌕"*15)
+        ch = int(input("Enter Your Choice : "))
+        if ch == 1:
+            addSport()
+        elif ch == 2:
+            displaySport()
+        elif ch == 3:
+            searchSport()
+        elif ch == 4:
+            deleteSport()
+        elif ch == 5:
+            break
+        else:
+            print("Invalid Digit Pressed")
+            print("\n")
+
+
+#function to add a coach details
+def addCoach():
+    while True:
+        print("📖✏"*15)
+        print("Press 1 - Add a Coach Details")
+        print("Press 2- to go to the Main Menu")
+        print("📖✏"*15)
+        ch = int(input("Enter Your Choice : "))
+        if ch == 1:
+            q = "select max(cid) from coach"
+            cur.execute(q)
+            res = cur.fetchone()
+            if res[0] == None:
+                cid = 10
+            else:
+                cid = res[0] + 1
+            print("🦄🐾"*15)
+            print("\t\tADDING A NEW COACH TO THE CLUB")
+            print("🦄🐾"*15)
+            print("Enter Details for the Coach with id : ",cid)
+            cname = input("Enter Name of The Coach : ")
+            sid = int(input("Enter Sports id For Coach "+cname+" : "))
+            exp = input("Enter Experience (in yrs) : ")
+            phone = input("Enter Phone Number : ")
+            if isPhoneValid(phone):
+                pass
+            else:
+                print("INVALID PHONE NUMBER")
+                continue
+            email = input("Enter Email-id : ")
+            address = input("Enter Address : ")
+            data = (cid,cname,sid,exp,phone,email,address)
+            q = "insert into COACH values(%s,%s,%s,%s,%s,%s,%s)"
+            cur.execute(q,data)
+            con.commit()
+            print("\tCOACH DETAILS ADDED SUCCESSFULLY")
+            print("🦄🐾"*21)
+            print("\n\n\n\n")
+        else:
+            break
+
+#Function to display details of all COACHES
+def displayCoach():
+    q = "select cid,cname,sname,experience,phone,email,address from Coach, sports where coach.sid = sports.sid"
+    cur.execute(q)
+    res = cur.fetchall()
+    print("👀🦚"*15)
+    print("\t\tCOACH DETAILS")
+    print("👀🦚"*15)
+    print("\n\n\n\n")
+    myTable = PrettyTable(["Cid","Cname","Sname","Experience","Phone","Email","Address"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    print("\n\n\n\n")
+
+#function to search a particular coach
+def searchCoach():
+    mid = int(input("Enter Coach id to be Searched : "))
+    q = "select * from Coach where cid = "+str(mid)
+    cur.execute(q)
+    res = cur.fetchall()
+    if len(res) == 0:
+        print("No Coach Details Found")
+        return
+    print("💻📕"*15)
+    print("\t\tCOACH DETAILS")
+    print("💻📕"*15)
+    myTable = PrettyTable(["Cid","Cname","Sid","Experience","Phone","Email","Address"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    print("\n\n\n")
+    print("💻📕"*15)
+
+#function to delete record of a coach
+def deleteCoach():
+    mid = int(input("Enter Coach id to be Deleted : "))
+    q = "select * from Coach where cid = "+str(mid)
+    cur.execute(q)
+    res = cur.fetchall()
+    if len(res) == 0:
+        print("No Coach Details Found")
+        return
+    print("🎃🎡"*15)
+    print("\t\tCOACH DETAILS")
+    print("🎃🎡"*15)
+    myTable = PrettyTable(["Cid","Cname","Sid","Experience","Phone","Email","Address"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    ch = input("Are You Sure You Want To Delete The Details Of The Coach Shown Above (yes/no) : ")
+    if ch.lower() == 'yes':
+        print("🎃🎡"*15)
+        q = "DELETE from COACH where cid = "+str(mid)
+        cur.execute(q)
+        con.commit()
+        print("\t\tSPORTS DETAILS DELETED")
+        print("🎃🎡"*15)
+        
+#Function to manage records of coaches 
+def manage_coaches():
+    while True:
+        print("🌌🌕"*15)
+        print("\t\t 1 -- add a new coach")
+        print("\t\t 2 -- display all coach details")
+        print("\t\t 3 -- search a coach")
+        print("\t\t 4 -- delete a coach")
+        print("\t\t 5 -- go back to main menu")
+        print("🌌🌕"*15)
+        ch = int(input("Enter Your Choice : "))
+        if ch == 1:
+            addCoach()
+        elif ch == 2:
+            displayCoach()
+        elif ch == 3:
+            searchCoach()
+        elif ch == 4:
+            deleteCoach()
+        elif ch == 5:
+            break
+        else:
+            print("Invalid Digit Pressed")
+            print("\n")
+#function to add a batch details
+def addBatch():
+    while True:
+        print("📖✏"*15)
+        print("Press 1 - Add a Batch Details")
+        print("Press 2- to go to the Main Menu")
+        print("📖✏"*15)
+        ch = int(input("Enter Your Choice : "))
+        if ch == 1:
+            q = "select max(bid) from batches"
+            cur.execute(q)
+            res = cur.fetchone()
+            if res[0] == None:
+                bid = 1000
+            else:
+                bid = res[0] + 1
+            print("🦄🐾"*15)
+            print("\t\tADDING A NEW BATCH TO THE CLUB")
+            print("🦄🐾"*15)
+            print("Enter Details for the Batch with id : ",bid)
+            cname = input("Enter Name of The Batch : ")
+            days = input("Enter Days : ")
+            time = input("Enter Time : ")
+            cid = input("Enter Coach id : ")
+            fees = int(input("Enter Fees : " ))
+            
+            data = (bid,cname,days,time,cid,fees)
+            q = "insert into batches values(%s,%s,%s,%s,%s,%s)"
+            cur.execute(q,data)
+            con.commit()
+            print("\tBATCH DETAILS ADDED SUCCESSFULLY")
+            print("🦄🐾"*21)
+            print("\n\n\n\n")
+        else:
+            break
+#Function to display details of all batches
+def displayBatch():
+    q = "select * from batches"
+    cur.execute(q)
+    res = cur.fetchall()
+    print("👀🦚"*15)
+    print("\t\tBATCH DETAILS")
+    print("👀🦚"*15)
+    print("\n\n\n\n")
+    myTable = PrettyTable(["Bid","Bname","Days","Btime","Cid","Fees"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    print("\n\n\n\n")
+
+#function to search a particular batch
+def searchBatch():
+    mid = int(input("Enter Batch id to be Searched : "))
+    q = "select * from batches where bid = "+str(mid)
+    cur.execute(q)
+    res = cur.fetchall()
+    if len(res) == 0:
+        print("No Batch Details Found")
+        return
+    print("💻📕"*15)
+    print("\t\tBATCH DETAILS")
+    print("💻📕"*15)
+    myTable = PrettyTable(["Bid","Bname","Days","Btime","Cid","Fees"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    print("\n\n\n")
+    print("💻📕"*15)
+
+#function to delete record of a batch
+def deleteBatch():
+    mid = int(input("Enter Batch id to be Deleted : "))
+    q = "select * from Batches where bid = "+str(mid)
+    cur.execute(q)
+    res = cur.fetchall()
+    if len(res) == 0:
+        print("No Batch Details Found")
+        return
+    print("🎃🎡"*15)
+    print("\t\tBATCH DETAILS")
+    print("🎃🎡"*15)
+    myTable = PrettyTable(["Bid","Bname","Days","Btime","Cid","Fees"])
+    for row in res:
+        myTable.add_row(row)
+    print("☆❁"*20)
+    print(myTable)
+    print("☆❁"*20)
+    ch = input("Are You Sure You Want To Delete The Details Of The Batch Shown Above (yes/no) : ")
+    if ch.lower() == 'yes':
+        print("🎃🎡"*15)
+        q = "DELETE from BATCH where bid = "+str(mid)
+        cur.execute(q)
+        con.commit()
+        print("\t\tBATCH DETAILS DELETED")
+        print("🎃🎡"*15)
+
+        
+#Function to manage records of batches
+def manage_batches():
+    while True:
+        print("🌌🌕"*15)
+        print("\t\t 1 -- add a new batch")
+        print("\t\t 2 -- display all batch details")
+        print("\t\t 3 -- search a batch")
+        print("\t\t 4 -- delete a batch")
+        print("\t\t5 -- go back to main menu")
+        print("🌌🌕"*15)
+        ch = int(input("Enter Your Choice : "))
+        if ch == 1:
+            addBatch()
+        elif ch == 2:
+            displayBatch()
+        elif ch == 3:
+            searchBatch()
+        elif ch == 4:
+            deleteBatch()
+        elif ch == 5:
+            break
+        else:
+            print("Invalid Digit Pressed")
+            print("\n")
+
+
+#login screen
+a = rd.randint(1,9)
+b = rd.randint(1,9)
+c = rd.randint(1,9)
+d = rd.randint(1,9)
+e = rd.randint(1,9)
+num = str(a)+str(b)+str(c)+str(d)+str(e)
+#MAIN CODE 
+print("\t\t",num)
+n = int(input("Enter The Number Shown Above : "))
+if str(n) == num:
+    print("🥳🥳"*15)
+    print("YAYYIIEE...ACCESS GRANTED..!!")
+    print("\n\n\n")
+    while con. is_connected():
+        ch = welcome()
+        if ch == 7:
+            print("Thanks For Visiting")
+            break
+        elif ch == 1:
+            manage_members()
+        elif ch == 2:
+            manage_sports()
+        elif ch == 3:
+            manage_coaches()
+        elif ch == 4:
+            manage_batches()
+        elif ch == 5:
+            enroll_member()
+        elif ch == 6:
+            show_enrollments()
+        else:
+            print("-___- 5 options kaafi nhi the 😒😒")
+            break
+
+else:
+    print("Seems like it's not a human being -__-")
+    print("You Can't Access the Information. SORRY >_____<")      
+
