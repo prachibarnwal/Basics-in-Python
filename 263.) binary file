@@ -1,0 +1,58 @@
+import pickle as p
+import os
+def Write():
+    f= open("Student.dat" , 'wb')
+    print("Details of the Students : ")
+    while True:
+        roll_no = int(input("Enter the Roll no. : "))
+        name = input("Enter the Name of Student : ")
+        marks = float(input("Enter marks of the Student : "))
+        rec = [roll_no, name , marks]
+        p.dump(rec,f)
+        choice = input("DO you want to enter more records? (Yes/No) : ")
+        if choice.lower()== "no":
+            break
+            f.close()
+def Read():
+    f=open('Student.dat',"rb")
+    try:
+        while True:
+            recs = p.load(f)
+            print(recs)
+            #print(type(recs))
+    except EOFError:
+        f.close()
+def Update():
+    print("Updation of marks & name of a Student : ")
+    f = open("Student.dat",'rb')
+    g = open("temp.dat","wb")
+    roll_no = int(input("Enter the Roll Number whose Marks you want to Update : "))
+    found = 0
+    try:
+        while True:
+            record = p.load(f)
+            #print(type(pos))
+            if record[0]== roll_no:
+                print(record)
+                name = input("Enter Modified Name : ")
+                upd_marks = eval(input("Enter the Updated Marks : "))
+                record = [roll_no,name,upd_marks]
+                p.dump(record,g)
+                found = 1
+            else:
+                p.dump(record,g)
+    except EOFError:
+        f.close()
+        g.close()
+    if found == 0:
+        print("Sorry :( No Record Found ")
+        print("Please Enter a Correct Roll Number ")
+    else:
+        os.remove("Student.dat")
+        os.rename("temp.dat","Student.dat")
+Write()
+print("Record of the Details of Students : ")
+Read()
+Update()
+print("Updated Record of the Details of Students : ")
+Read()
