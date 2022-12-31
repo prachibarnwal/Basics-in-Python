@@ -1,0 +1,179 @@
+#module import
+import mysql.connector as mycon
+
+#establishing connection
+con = mycon.connect(host = 'localhost',user = "root", password = "")
+if con.is_connected():
+    print("CONNECTION ESTABLISHED")
+    q = 'create database hotel'
+    cr1 = con.cursor()
+    cr1.execute(q)
+
+    q = 'use hotel'
+    cr1.execute(q)
+    
+    q = '''create table rooms
+    (room_no integer primary key,
+    room_type varchar(20),
+    location varchar(30),
+    no_o_guest integer,
+    rent integer,
+    status varchar(20))'''
+    cr1.execute(q)
+
+    q = '''crate table booking
+    (cname varchar(50),
+    idno varchar(50),
+    idtype varchar(50),
+    address varchar(50),
+    phone varchar(20),
+    gender varchar(10),
+    d_o_checking date,
+    d_o_checkout date,
+    room_no integer)'''
+    cr1.execute(q)
+
+    con.commit()
+
+# module import
+import mysql.connector as mycon
+from prettytable import PrettyTable
+
+# establishing connection
+con = mycon.connect(host='localhost', user="root", password="", database='hotel')
+
+
+def showMenu():
+    while True:
+        print("\n")
+        print("*" * 50)
+        print("\t   ☆☆ AL HOTEL ☆☆")
+        print("*" * 50)
+        print("1 -- create a new room")
+        print("2 -- show all rooms")
+        print("3 -- show all vacant rooms")
+        print("4 -- show all occupied rooms")
+        print("5 -- book a room")
+        print("6 -- Check Out")
+        print("7 -- exit")
+        ch = int(input("Enter Your Choice : "))
+        if ch == 1:
+            createRoom()
+        elif ch == 2:
+            showRooms()
+        elif ch == 3:
+            showVacantRooms()
+        elif ch == 4:
+            showOccupiedRooms()
+        elif ch == 5:
+            bookRoom()
+        elif ch == 6:
+            checkout()
+        elif ch == 7:
+            break
+
+
+def createRoom():
+    print("*" * 50)
+    print("\t------Enter Room Details------")
+    print("*" * 50)
+    rno = int(input("Enter Room Number : "))
+    Type = input("Enter Room Type (simple,deluxe,super deluxe,etc) : ")
+    guest = int(input("Enter Maximum Number of Guests Allowed : "))
+    loc = input("Enter Location Details : ")
+    rent = int(input("Enter Charges Per Day : "))
+    status = 'vacant'
+    q = 'insert into rooms values (%s,%s,%s,%s,%s,%s)'
+    data = (rno, Type, loc, guest, rent, status)
+    cur = con.cursor()
+    cur.execute(q, data)
+    con.commit()
+    print("\t  ---ROOM CREATED---")
+
+
+def showRooms():
+    q = "select * from rooms"
+    cr1 = con.cursor()
+    cr1.execute(q)
+    res = cr1.fetchall()
+    tables = PrettyTable(["Room_No", "Room_Tyep", "Location", "No_o_Guests", "Rent", "Status"])
+    for row in res:
+        tables.add_row(row)
+    print("☆❁" * 20)
+    print(tables)
+    print("☆❁" * 20)
+    print("\n\n")
+
+
+def showVacantRooms():
+    q = "select * from rooms where status='Vacant'"
+    cr1 = con.cursor()
+    cr1.execute(q)
+    res = cr1.fetchall()
+    tables = PrettyTable(["Room_No", "Room_Type", "Location", "No_o_Guests", "Rent", "Status"])
+    for row in res:
+        tables.add_row(row)
+    print("☆❁" * 20)
+    print(tables)
+    print("☆❁" * 20)
+    print("\n\n")
+
+
+def showOccupiedRooms():
+    q = "select b.room_no,cname,phone,d_o_checking from rooms r ,booking b where status='Occupied' and r.room_no = b.room_no"
+    cr1 = con.cursor()
+    cr1.execute(q)
+    res = cr1.fetchall()
+    tables = PrettyTable(["Room_No", "Cust_Name", "Phone", "D_O_Check-in"])
+    for row in res:
+        tables.add_row(row)
+    print("☆❁" * 20)
+    print(tables)
+    print("☆❁" * 20)
+    print("\n\n")
+
+
+def bookRoom():
+    print("*" * 50)
+    print("\t BOOKING A ROOM")
+    print("*" * 50)
+    cname = input("Enter Customer Name : ")
+    idtype = input("Enter the ID Submitted(PAN Card/ License/Passport/Adhar Crad) : ")
+    idno = input("Enter the ID Number : ")
+    address = input("Enter Address : ")
+    phone = input("Enter Phone Number : ")
+    gender = input("Enter Gender : ")
+    d_checkin = input("Enter Date of Check-in (yyyy-mm-dd) : ")
+    room_no = int(input("Enter Room Number : "))
+    q = "insert into booking (cname,idno,idtype,address,phone,gender,d_o_checking,room_no) values(%s,%s,%s,%s,%s,%s,%s,%s)"
+    data = (cname, idno, idtype, address, phone, gender, d_checkin, room_no)
+    cr = con.cursor()
+    cr.execute(q, data)
+    con.commit()
+    q = "update rooms set status ='Occupied' where room_no = " + str(room_no)
+    cr.execute(q)
+    con.commit()
+    print("*" * 50)
+    print("\tRoom Booked")
+    print("*" * 50)
+
+
+def checkout():
+    room_no = input("Enter the Room Number : ")
+    q = "select r.room_no, cname, phone from rooms r ,booking b where status='Occupied' and r.room_no =" + room_no
+    cr1 = con.cursor()
+    cr1.execute(q)
+    res = cr1.fetchall()
+    for row in res:
+        print(row)
+    chkoutdate = input("Enter the date of Checkout : ")
+    q = "update rooms set status='Vacant' where room_no =" + str(room_no)
+    cr1.execute(q)
+    con.commit()
+
+
+if con.is_connected():
+    showMenu()
+
+
+    
